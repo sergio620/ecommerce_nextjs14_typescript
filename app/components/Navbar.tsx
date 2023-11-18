@@ -12,14 +12,14 @@ import { FaTimes } from "react-icons/fa";
 
 interface links {
   href: string;
-  child?: string | React.JSX.Element;
+  child: string | React.JSX.Element;
   breakpoint: string;
 }
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400"] });
 export default function Navbar() {
   const links: links[] = [
-    { href: "/", child: "Tienda", breakpoint: "hidden md:flex" },
+    { href: "/", child: "Home", breakpoint: "hidden md:flex" },
     { href: "/hombres", child: "Hombres", breakpoint: "hidden md:flex" },
     { href: "/mujeres", child: "Mujeres", breakpoint: "hidden md:flex" },
     {
@@ -41,9 +41,9 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   const content = (
     <div
-      className={`transition-all duration-500 w-full md:w-1/2 fixed z-10 bg-slate-50/90 top-0 ${
-        isOpen ? "" : "right-[-800px]"
-      } right-0 flex flex-col items-center`}
+      className={`transition-all duration-500 w-full md:w-1/2 fixed z-40 bg-slate-50/90 top-0 ${
+        isOpen ? "right-0" : "right-[-800px]"
+      }  flex flex-col items-center`}
     >
       <button
         className="self-end h-11"
@@ -72,10 +72,10 @@ export default function Navbar() {
   return (
     <>
       <div
-        className={`${poppins.className} flex shadow justify-between items-center h-20 px-5`}
+        className={`${poppins.className} flex shadow-xl justify-between items-center h-20 px-5`}
       >
         <div>
-          <Image src={logo} alt="logo" width={100} height={100}></Image>
+          <Image src={logo} alt="logo" width={100} height={100} />
         </div>
         <nav className="flex items-center h-full ">
           <ul className="h-full flex items-center ">

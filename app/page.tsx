@@ -1,5 +1,16 @@
-import Image from "next/image";
-import Link from "next/link";
+import Hero from "./components/Hero";
+import Popular from "./components/Popular";
+import Offers from "./components/Offers";
+import NewCollections from "./components/NewCollections";
+import NewsLetter from "./components/NewsLetter";
 export default function Home() {
-  return <>HOME</>;
+  return (
+    <>
+      <Hero />
+      <Popular />
+      <Offers />
+      <NewCollections />
+      <NewsLetter />
+    </>
+  );
 }
