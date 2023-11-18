@@ -11,7 +11,7 @@ export default function NewsLetter() {
         <input
           type="email"
           placeholder="Su identificación de correo electrónico"
-          className="w-3/5 h-full rounded-l-lg"
+          className="w-3/5 h-full rounded-l-lg pl-3"
         />
         <button className="h-full text-xl rounded-r-lg bg-red-500 text-white">
           Suscribirse
