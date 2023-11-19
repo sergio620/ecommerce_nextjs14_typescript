@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import logo from "@/public/Assets/logo.png";
+import logo from "@/public/logo.png";
 import { Poppins } from "next/font/google";
 import { FaSearch } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
@@ -20,28 +20,24 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["400"] });
 export default function Navbar() {
   const links: links[] = [
     { href: "/", child: "Home", breakpoint: "hidden md:flex" },
+    { href: "/calzados", child: "Calzados", breakpoint: "hidden md:flex" },
     { href: "/hombres", child: "Hombres", breakpoint: "hidden md:flex" },
     { href: "/mujeres", child: "Mujeres", breakpoint: "hidden md:flex" },
     {
-      href: "/buscar",
-      child: <FaSearch className="h-5 w-10" />,
-      breakpoint: "flex",
-    },
-    {
-      href: "/ingresar",
-      child: <FaUser className="h-5 w-10" />,
+      href: "/login",
+      child: <FaUser className="text-gray-600 h-5 w-10" />,
       breakpoint: "flex",
     },
     {
       href: "/carrito",
-      child: <AiOutlineShoppingCart className="h-5 w-10" />,
+      child: <AiOutlineShoppingCart className="text-gray-600 h-5 w-10" />,
       breakpoint: "flex",
     },
   ];
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
-  const content = (
+  const hiddenBar = (
     <div
-      className={`transition-all duration-500 w-full md:w-1/2 fixed z-40 bg-slate-50/90 top-0 ${
+      className={`transition-all duration-500 w-full md:w-1/2 fixed z-50 bg-slate-50/90 top-0 ${
         isOpen ? "right-0" : "right-[-800px]"
       }  flex flex-col items-center`}
     >
@@ -72,10 +68,20 @@ export default function Navbar() {
   return (
     <>
       <div
-        className={`${poppins.className} flex shadow-xl justify-between items-center h-20 px-5`}
+        className={`${poppins.className} z-40 bg-white sticky w-full top-0 left-0  flex shadow-xl justify-between items-center h-20 px-5`}
       >
         <div>
           <Image src={logo} alt="logo" width={100} height={100} />
+        </div>
+        <div className="rounded flex h-[60px] grow p-[10px]">
+          <input
+            className="pl-5 grow h-[40px] h-full py-[9px] bg-[#F7F6F6]"
+            type="text"
+            placeholder="Buscar producto"
+          />
+          <button className="border-gray200 border w-[45px]">
+            <FaSearch className="text-gray-600 h-5 w-full" />
+          </button>
         </div>
         <nav className="flex items-center h-full ">
           <ul className="h-full flex items-center ">
@@ -97,7 +103,7 @@ export default function Navbar() {
           </button>
         </nav>
       </div>
-      {content}
+      {hiddenBar}
     </>
   );
 }

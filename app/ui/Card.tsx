@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function card(props: Record<string, any>) {
+export default function Card(props: Record<string, any>) {
   return (
     <div className="group flex flex-col hover:shadow-xl">
       <Link href={`/product/${props.id}`} className="h-full">

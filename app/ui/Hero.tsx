@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import woman from "@/public/Assets/woman.png";
+import woman from "@/public/woman.png";
 
 export default function Hero() {
   return (
-    <div className="bg-gray-200 z-10 relative h-96 flex flex-col justify-center">
+    <div className="bg-[#CDF5FD] z-10 relative h-96 flex flex-col justify-center">
       <Image
         className="object-cover pl-[300px] sm:pl-[300px] md:pl-[500px] lg:pl-[700px] xl:pl-[900px] z-20"
         fill

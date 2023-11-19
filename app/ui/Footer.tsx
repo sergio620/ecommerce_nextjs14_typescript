@@ -1,4 +1,4 @@
-import logo from "@/public/Assets/logo.png";
+import logo from "@/public/logo.png";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { AiFillFacebook } from "react-icons/ai";
 import { BsWhatsapp } from "react-icons/bs";

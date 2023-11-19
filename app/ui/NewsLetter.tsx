@@ -1,6 +1,6 @@
 export default function NewsLetter() {
   return (
-    <div className="mx-auto p-5 bg-[#F1F2EC]">
+    <div className="mx-auto p-5 bg-[#CDF5FD]">
       <p className="w-4/5 mx-auto text-xl sm:text-3xl md:text-7xl lg:text-8xl text-gray-800 font-semibold">
         Recibe ofertas exclusivas en tu correo electrónico
       </p>
@@ -13,7 +13,7 @@ export default function NewsLetter() {
           placeholder="Su identificación de correo electrónico"
           className="w-3/5 h-full rounded-l-lg pl-3"
         />
-        <button className="h-full text-xl rounded-r-lg bg-red-500 text-white">
+        <button className="px-3 h-full text-xl rounded-r-lg bg-red-500 text-white">
           Suscribirse
         </button>
       </div>

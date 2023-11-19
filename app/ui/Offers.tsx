@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Offers() {
   return (
-    <div className="relative h-96 z-10 bg-[#F1F2EC] pl-10 flex items-center">
+    <div className="relative h-96 z-10 bg-[#CDF5FD] pl-12 lg:pl-24 xl:pl-64 flex items-center">
       <div className="absolute z-30 flex flex-col justify-center items-start">
         <p className="text-xl sm:text-3xl md:text-7xl lg:text-8xl text-gray-800 font-semibold">
           Exclusivo <br /> Ofertas <br /> para ti
