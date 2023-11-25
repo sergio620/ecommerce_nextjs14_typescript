@@ -44,6 +44,4 @@ const userSchema = new mongoose.Schema<IUser>(
   { timestamps: true } //when we try to create a new document it automactically tell us when it was created, last updated https://mongoosejs.com/docs/timestamps.html
 );
 
-const User = mongoose.model("user", userSchema);
-
-export default User;
+export const User = mongoose.model("user", userSchema);

@@ -1,12 +1,10 @@
-"use client";
-import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Card(props: Record<string, any>) {
   return (
     <div className="group flex flex-col hover:shadow-xl">
-      <Link href={`/product/${props.id}`} className="h-full">
+      <Link href={`/${props.id}`} className="h-full">
         <div className="h-full px-2 pt-2  rounded shadow flex flex-col items-center justify-center gap-2">
           {/*   <button onClick={window.scrollTo(0, 0)}> */}
           <Image

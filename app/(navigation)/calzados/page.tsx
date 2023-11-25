@@ -1,14 +1,18 @@
-import Sidebar from "../../ui/calzados/Sidebar/Sidebar";
-import Header from "../../ui/calzados/Header";
-import Content from "../../ui/calzados/Content";
+import Sidebar from "../../ui/calzados/Sidebar";
+import TopFilter from "@/app/ui/calzados/TopFilter";
+import { Suspense } from "react";
+import ContentShoeSkeleton from "@/app/ui/skeletons";
+import PopulateShoes from "@/app/ui/calzados/PopulateShoes";
 
-export default function Calzados() {
+export default async function Calzados() {
   return (
     <div className="flex">
       <Sidebar />
       <section className="grow">
-        <Header />
-        <Content />
+        <TopFilter />
+        <Suspense fallback={<ContentShoeSkeleton />}>
+          <PopulateShoes />
+        </Suspense>
       </section>
     </div>
   );

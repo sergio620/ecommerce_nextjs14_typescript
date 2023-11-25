@@ -1,49 +1,53 @@
 import mongoose from "mongoose";
-//Please note that extending Document is discouraged by mongoose devs.
-//https://stackoverflow.com/questions/34482136/mongoose-the-typescript-way
-//use this official guide https://mongoosejs.com/docs/typescript.html
-//https://www.geeksforgeeks.org/what-is-the-difference-between-string-and-string-in-typescript/
-//https://github.com/saidMounaim/Auth-TS/blob/main/models/User.ts
-interface IUser {
-  username: string;
-  email: string;
-  password: string;
-  isAdmin: boolean;
-  avatar?: string;
-  createdAt: NativeDate;
-  updatedAt: NativeDate;
-}
-
-const userSchema = new mongoose.Schema<IUser>(
+/* interface shoe {
+  img: string;
+  title: string;
+  reviews: string;
+  prevPrice: string;
+  newPrice: string;
+  company: string;
+  color: string;
+  category: string;
+} */
+const shoeSchema = new mongoose.Schema(
   {
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-
-    email: {
-      type: String,
-      required: true,
-      //https://masteringjs.io/tutorials/mongoose/unique
-      //https://masteringjs.io/tutorials/mongoose/e11000-duplicate-key
-      unique: true,
-    },
-
-    password: {
+    img: {
       type: String,
       required: true,
     },
 
-    isAdmin: {
-      type: Boolean,
+    title: {
+      type: String,
       required: true,
-      default: false,
+    },
+
+    reviews: {
+      type: String,
+      required: true,
+    },
+
+    prevPrice: {
+      type: String,
+      required: true,
+    },
+    newPrice: {
+      type: String,
+      required: true,
+    },
+    company: {
+      type: String,
+      required: true,
+    },
+    color: {
+      type: String,
+      required: true,
+    },
+    category: {
+      type: String,
+      required: true,
     },
   },
   { timestamps: true } //when we try to create a new document it automactically tell us when it was created, last updated https://mongoosejs.com/docs/timestamps.html
 );
 
-const User = mongoose.model("shoe", userSchema);
-
-export default User;
+export const Shoe = mongoose.models.shoe || mongoose.model("shoe", shoeSchema);

@@ -30,7 +30,7 @@ export default function Navbar() {
     },
     {
       href: "/carrito",
-      child: <AiOutlineShoppingCart className="text-gray-600 h-5 w-10" />,
+      child: <AiOutlineShoppingCart className="text-gray-600 h-8 w-10" />,
       breakpoint: "flex",
     },
   ];
