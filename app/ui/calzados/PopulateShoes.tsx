@@ -2,14 +2,13 @@
 import { fetchShoes } from "@/app/lib/data";
 import CardShoe from "@/app/ui/calzados/CardShoe";
 import { useEffect } from "react";
-import { useState } from "react";
 import { useShoeContext } from "./context/ShoeContext";
 
 export default async function PopulateShoes() {
   const { state, dispatch } = useShoeContext();
   useEffect(() => {
     async function fetchData() {
-      const data = await fetchShoes();
+      const data = await fetchShoes(state);
       dispatch({ type: "updateData", payload: data });
     }
     fetchData();
