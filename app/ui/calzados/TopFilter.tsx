@@ -38,6 +38,7 @@ export default function TopFilter() {
               dispatch({
                 type: "updateFilter",
                 name: e.currentTarget.name,
+                //https://stackoverflow.com/questions/66485576/property-value-does-not-exist-on-type-eventtarget-ts2339
                 value: e.currentTarget.value,
               })
             }

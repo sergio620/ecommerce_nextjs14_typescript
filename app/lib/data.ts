@@ -1,4 +1,5 @@
 import "dotenv/config";
+import { State } from "./definitions";
 
 function assertIsDefined(
   value: any
@@ -24,14 +25,18 @@ function assertIsArray(value: any): asserts value is Record<string, any>[] {
     throw new Error("Response isn't a object");
   }
 }
-export async function fetchShoes() {
+export async function fetchShoes(state: State) {
+  const { category, price, color, company } = state;
   try {
-    const response = await fetch(`http://localhost:3000/api/products`, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
+    const response = await fetch(
+      `http://localhost:3000/api/products?category=${category}&price=${price}&color=${color}&company=${company}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      }
+    );
     const data = await response.json();
     assertIsArray(data);
     return data;
