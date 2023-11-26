@@ -1,19 +1,30 @@
 "use client";
 import { createContext, useContext, useReducer } from "react";
-import { State, Action, valueShoeContext } from "@/app/lib/definitions";
-
+import {
+  State,
+  Action,
+  valueShoeContext,
+  SelectedFilter,
+} from "@/app/lib/definitions";
+//https://www.youtube.com/watch?v=I7dwJxGuGYQ
+//https://www.youtube.com/watch?v=Wta5DQv_EfA
+//https://www.youtube.com/watch?v=rgp_iCVS8ys
+//https://www.youtube.com/watch?v=6e3PHoN7jj8
 const ShoeContext = createContext<valueShoeContext | null>(null);
 
-function reducer(state: State, action: Action) {
+function reducer(state: State, action: Action): State {
   const { type, name, value, payload } = action;
   switch (type) {
-    case "updateFilter":
+    case "clickedInput":
       if (name) {
-        return { ...state, [name]: value };
+        return {
+          ...state,
+          selectedFilter: { ...state.selectedFilter, [name]: value },
+        };
       } else {
         throw new Error(`Para actualizar el filtro falta el atributo "name"`);
       }
-    case "updateData":
+    case "afterFetchData":
       if (payload) {
         return { ...state, data: payload };
       } else {
@@ -24,11 +35,13 @@ function reducer(state: State, action: Action) {
   }
 }
 
-const initialvalue = {
-  category: "all",
-  price: "all",
-  color: "all",
-  company: "all",
+const initialvalue: State = {
+  selectedFilter: {
+    category: "all",
+    price: "all",
+    color: "all",
+    company: "all",
+  },
   data: [],
 };
 

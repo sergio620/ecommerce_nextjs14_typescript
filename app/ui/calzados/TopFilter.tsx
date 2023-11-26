@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useShoeContext } from "./context/ShoeContext";
+import { Name, Value } from "@/app/lib/definitions";
 
 const filter = [
   {
@@ -24,7 +25,18 @@ const filter = [
     value: "vans",
   },
 ];
-
+//asegurar que el elemento input tiene la propiedad "e.currentTarget.name" y que esta es igual a los valores contenidos del type "Name"
+function assertNameIsDefined(name: any): asserts name is Name {
+  if (name === undefined || name === null) {
+    throw new Error("e.currentTarget.name is undefined or null");
+  }
+}
+//asegurar que el elemento input tiene la propiedad "e.currentTarget.value" y que esta es igual a los valores contenidos del type "Value"
+function assertValueIsDefined(value: any): asserts value is Value {
+  if (value === undefined || value === null) {
+    throw new Error("e.currentTarget.value is undefined or null");
+  }
+}
 export default function TopFilter() {
   const { dispatch } = useShoeContext();
   return (
@@ -34,15 +46,19 @@ export default function TopFilter() {
         {filter.map((item, index) => (
           <button
             key={index}
-            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+              let name = e.currentTarget.name;
+              let value = e.currentTarget.value;
+              assertNameIsDefined(name);
+              assertValueIsDefined(value);
               dispatch({
-                type: "updateFilter",
-                name: e.currentTarget.name,
+                type: "clickedInput",
+                name: name,
                 //https://stackoverflow.com/questions/66485576/property-value-does-not-exist-on-type-eventtarget-ts2339
-                value: e.currentTarget.value,
-              })
-            }
-            className="btns"
+                value: value,
+              });
+            }}
+            className="focus:bg-blue-500"
             value={item.value}
             name="company"
           >

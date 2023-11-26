@@ -20,7 +20,7 @@ export default function CardShoe(props: Record<string, any>) {
         <p className="total-reviews">{props.reviews}</p>
         <section className="flex justify-between">
           <div>
-            <del>{props.prevPrice}</del>
+            <del className="mr-2 text-red-500">{props.prevPrice}</del>
             {props.newPrice}
           </div>
           <BsBagHeartFill />

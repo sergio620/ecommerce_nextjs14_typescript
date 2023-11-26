@@ -1,5 +1,7 @@
+import { ElementsSidebar } from "@/app/lib/definitions";
 import Input from "./Input";
-const filter = [
+
+const elementsSidebar: ElementsSidebar = [
   {
     sectionTag: "Categoria",
     inputElements: [
@@ -28,6 +30,7 @@ const filter = [
       { inputTag: "Azul", value: "blue", name: "color" },
       { inputTag: "Rojo", value: "red", name: "color" },
       { inputTag: "Verde", value: "green", name: "color" },
+      { inputTag: "Blanco", value: "white", name: "color" },
     ],
   },
 ];
@@ -35,7 +38,7 @@ const filter = [
 export default function Sidebar() {
   return (
     <div className="flex flex-col bg-blue-500 w-[13%] overflow-y-scroll">
-      {filter.map((item, index) => (
+      {elementsSidebar.map((item, index) => (
         <div key={index}>
           <div className="p-3">{item.sectionTag}</div>
           <div>

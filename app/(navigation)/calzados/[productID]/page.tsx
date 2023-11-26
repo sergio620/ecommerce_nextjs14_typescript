@@ -1,8 +1,7 @@
 import { fetchSingleProduct } from "@/app/lib/data";
 import Image from "next/image";
-import { BsBagHeartFill } from "react-icons/bs";
 import { FaStar } from "react-icons/fa";
-
+//https://nextjs.org/docs/app/api-reference/file-conventions/page
 export default async function Product({
   params,
 }: {

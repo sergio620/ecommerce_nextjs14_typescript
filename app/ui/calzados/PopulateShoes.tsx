@@ -4,15 +4,20 @@ import CardShoe from "@/app/ui/calzados/CardShoe";
 import { useEffect } from "react";
 import { useShoeContext } from "./context/ShoeContext";
 
-export default async function PopulateShoes() {
+export default function PopulateShoes() {
   const { state, dispatch } = useShoeContext();
   useEffect(() => {
     async function fetchData() {
       const data = await fetchShoes(state);
-      dispatch({ type: "updateData", payload: data });
+      dispatch({ type: "afterFetchData", payload: data });
     }
     fetchData();
-  }, [state.category, state.color, state.price, state.company]);
+  }, [
+    state.selectedFilter.category,
+    state.selectedFilter.color,
+    state.selectedFilter.price,
+    state.selectedFilter.company,
+  ]);
   return (
     <div className="p-12 grid grid-cols-2 gap-2 md:grid-cols-3 md:gap-10">
       {/* https://www.youtube.com/watch?v=8K1N3fE-cDs min 4:50 Reason of question mark*/}
