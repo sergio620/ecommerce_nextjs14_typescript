@@ -19,9 +19,11 @@ export default function CardShoe(props: Record<string, any>) {
         <p className="card-title">{props.title}</p>
         <p className="total-reviews">{props.reviews}</p>
         <section className="flex justify-between">
-          <div>
-            <del className="mr-2 text-red-500">{props.prevPrice}</del>
-            {props.newPrice}
+          {/* How to convert a string to a number in JavaScript using the unary plus operator (+) */}
+          {/* https://www.freecodecamp.org/news/how-to-convert-a-string-to-a-number-in-javascript/ */}
+          <div className="text-blue-500 ">{+props.newPrice + 2}</div>
+          <div className="line-through text-gray-500">
+            {props.prevPrice.match(/[^$,]+/g)[0]}
           </div>
           <BsBagHeartFill />
         </section>
