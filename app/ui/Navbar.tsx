@@ -9,7 +9,8 @@ import { FaUser } from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FaBars } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
-
+import { usePathname } from "next/navigation";
+import { useShoeContext } from "./calzados/context/ShoeContext";
 interface links {
   href: string;
   child: string | React.JSX.Element;
@@ -18,18 +19,31 @@ interface links {
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400"] });
 export default function Navbar() {
+  const { dispatch, state } = useShoeContext();
   const links: links[] = [
     { href: "/", child: "Home", breakpoint: "hidden md:flex" },
-    { href: "/calzados", child: "Calzados", breakpoint: "hidden md:flex" },
-    { href: "/hombres", child: "Hombres", breakpoint: "hidden md:flex" },
-    { href: "/mujeres", child: "Mujeres", breakpoint: "hidden md:flex" },
+    {
+      href: "/products/calzados",
+      child: "Calzados",
+      breakpoint: "hidden md:flex",
+    },
+    {
+      href: "/products/hombres",
+      child: "Hombres",
+      breakpoint: "hidden md:flex",
+    },
+    {
+      href: "/products/mujeres",
+      child: "Mujeres",
+      breakpoint: "hidden md:flex",
+    },
     {
       href: "/login",
       child: <FaUser className="text-gray-600 h-5 w-10" />,
       breakpoint: "flex",
     },
     {
-      href: "/carrito",
+      href: "/cart",
       child: <AiOutlineShoppingCart className="text-gray-600 h-8 w-10" />,
       breakpoint: "flex",
     },
@@ -73,16 +87,30 @@ export default function Navbar() {
         <div>
           <Image src={logo} alt="logo" width={100} height={100} />
         </div>
-        <div className="rounded flex h-[60px] grow p-[10px]">
-          <input
-            className="pl-5 grow h-[40px] h-full py-[9px] bg-[#F7F6F6]"
-            type="text"
-            placeholder="Buscar producto"
-          />
-          <button className="border-gray200 border w-[45px]">
-            <FaSearch className="text-gray-600 h-5 w-full" />
-          </button>
-        </div>
+        {/* Renderiza la barra de busqueda solo si esta en la pagina /calzados */}
+        {usePathname() === "/calzados" && (
+          <div className="rounded flex h-[60px] grow p-[10px]">
+            <input
+              className="pl-5 grow h-[40px] h-full py-[9px] bg-[#F7F6F6]"
+              type="text"
+              placeholder="Buscar producto"
+              value={state.search}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                dispatch({
+                  type: "afterEveryKeyPressInSearchBox",
+                  inputSearchBox: e.target.value,
+                });
+              }}
+              onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
+                dispatch({ type: "afterPressEnter", keyEnterPressed: e.key })
+              }
+            />
+            <button className="border-gray200 border w-[45px]">
+              <FaSearch className="text-gray-600 h-5 w-full" />
+            </button>
+          </div>
+        )}
+        {/* -------------------------------------------------------------------- */}
         <nav className="flex items-center h-full ">
           <ul className="h-full flex items-center ">
             {links.map((link, index) => (
@@ -90,7 +118,17 @@ export default function Navbar() {
                 key={index}
                 className={`${link.breakpoint} items-center px-5 hover:bg-gray-200 h-11 border-r-2 border-gray-500`}
               >
-                <Link href={link.href}>{link.child}</Link>
+                <Link
+                  href={link.href}
+                  className={`${link.href === "/cart" ? "relative" : null}`}
+                >
+                  {link.child}
+                  {link.href === "/cart" && (
+                    <div className="absolute h-[22px] w-[22px] bg-red-500 rounded-full -top-2 -right-2 text-white text-center">
+                      {state.numberItemsInCart}
+                    </div>
+                  )}
+                </Link>
               </li>
             ))}
           </ul>

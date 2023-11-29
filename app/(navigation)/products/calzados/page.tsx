@@ -1,4 +1,4 @@
-import Sidebar from "../../ui/calzados/Sidebar";
+import Sidebar from "../../../ui/calzados/Sidebar";
 import TopFilter from "@/app/ui/calzados/TopFilter";
 import { Suspense } from "react";
 import ContentShoeSkeleton from "@/app/ui/skeletons";

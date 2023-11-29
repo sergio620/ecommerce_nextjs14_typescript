@@ -1,16 +1,18 @@
 import { Dispatch } from "react";
+//https://stackoverflow.com/questions/13315131/enforcing-the-type-of-the-indexed-members-of-a-typescript-object
+// it does enforce the key types and the value to be string
 export type Params = {
   [key: string]: string;
 };
 
 //https://www.youtube.com/watch?v=6e3PHoN7jj8
 
-export type Category = "all" | "sneakers" | "flats" | "sandals" | "heels";
-export type Price = "all" | "50" | "100" | "150" | "200";
-export type Color = "all" | "black" | "blue" | "red" | "green" | "white";
-export type Company = "all" | "nike" | "adidas" | "puma" | "vans";
+type Category = "all" | "sneakers" | "flats" | "sandals" | "heels";
+type Price = "all" | "50" | "100" | "150" | "200";
+type Color = "all" | "black" | "blue" | "red" | "green" | "white";
+type Company = "all" | "nike" | "adidas" | "puma" | "vans";
 //keys in each document in database
-export type keysInDataBase = "category" | "newPrice" | "color" | "company";
+/* export type keysInDataBase = "category" | "newPrice" | "color" | "company"; */
 //when a user click in input o button the attribute "name" only can be this values
 export type Name = "category" | "price" | "color" | "company";
 //when a user click in input o button the attribute "value" only can be this values
@@ -27,6 +29,7 @@ export type SearchParams = {
   price?: Price;
   color?: Color;
   company?: Company;
+  title?: string;
 };
 //-------------type for array in Sidebar.tsx
 export type ElementsSidebar = {
@@ -37,7 +40,7 @@ export type ElementsSidebar = {
     name: "category" | "price" | "color";
   }[];
 }[];
-//---select Filter has this form
+//---selected Filter has this form
 export type SelectedFilter = {
   category: Category;
   price: Price;
@@ -46,14 +49,35 @@ export type SelectedFilter = {
 };
 //---------Types for Dispatch-------
 export type State = {
+  switchKeydown: boolean;
+  search: string;
   selectedFilter: SelectedFilter;
   data: Record<string, any>[];
+  cart: Record<string, number>;
+  firstFetchShoePage: Record<string, any>[];
+  numberItemsInCart: number;
+  subtotalItem: Record<string, number>;
+  subtotalGeneral: number;
+  firstFetchHomePage: Record<string, any>[];
 };
 export type Action = {
-  type: "clickedInput" | "afterFetchData";
+  type:
+    | "clickedInput"
+    | "afterFetchData"
+    | "afterPressEnter"
+    | "afterEveryKeyPressInSearchBox"
+    | "addToCart"
+    | "firstFetchShoePage"
+    | "firstFetchHomePage"
+    | "deleteFromCart";
+  inputSearchBox?: string;
   name?: Name;
   value?: Value;
+  keyEnterPressed?: string;
   payload?: Record<string, any>[];
+  identifier?: string;
+  firstFetchShoes?: Record<string, any>[];
+  unitPrice?: number;
 };
 //----------Initial Value for inputs left Side bar------------------------
 export type InitialValue = {
@@ -65,8 +89,8 @@ export type InitialValue = {
 //-----------------------------------------------------------------------
 export type valueShoeContext = { state: State; dispatch: Dispatch<Action> };
 
-export type InputProps = {
+export type InputSideProps = {
   inputTag: string;
-  name: string;
-  value: string;
+  name: "category" | "price" | "color";
+  value: Category | Price | Color;
 };

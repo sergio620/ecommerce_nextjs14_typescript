@@ -37,10 +37,10 @@ const elementsSidebar: ElementsSidebar = [
 
 export default function Sidebar() {
   return (
-    <div className="flex flex-col bg-blue-500 w-[13%] overflow-y-scroll">
+    <div className="pl-3 flex flex-col bg-gray-200 w-[13%] ">
       {elementsSidebar.map((item, index) => (
-        <div key={index}>
-          <div className="p-3">{item.sectionTag}</div>
+        <div key={index} className="border-t border-gray-500">
+          <div className="p-3 font-bold">{item.sectionTag}</div>
           <div>
             {item.inputElements.map((element, index) => (
               <Input

@@ -16,6 +16,7 @@ function prepareData(params: SearchParams) {
       query[key] = { $regex: params[key], $options: "i" };
     }
   }
+
   return query;
 }
 export async function GET(request: NextRequest) {

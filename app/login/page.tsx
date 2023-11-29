@@ -25,11 +25,11 @@ export default function Login() {
             <div className="text-gray-600 text-sm place-self-start">
               Usuario
             </div>
-            <input type="text" className="border-b border-gray-600 p-5" />
+            <input type="text" className="border-b border-gray-600 p-3" />
             <div className="text-gray-600 text-sm place-self-start">
               Contraseña
             </div>
-            <input type="password" className="border-b border-gray-600 p-5" />
+            <input type="password" className="border-b border-gray-600 p-3" />
             <div className="text-sky-600 text-xs place-self-end">
               Olvidaste tu contraseña?
             </div>

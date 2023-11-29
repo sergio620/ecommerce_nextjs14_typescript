@@ -1,7 +1,7 @@
 "use client";
 import { ChangeEvent } from "react";
 import { useShoeContext } from "./context/ShoeContext";
-import { InputProps, Name, Value } from "@/app/lib/definitions";
+import { InputSideProps, Name, Value } from "@/app/lib/definitions";
 
 //asegurar que el elemento input tiene la propiedad "e.currentTarget.name" y que esta es igual a los valores contenidos del type "Name"
 function assertNameIsDefined(name: any): asserts name is Name {
@@ -16,7 +16,7 @@ function assertValueIsDefined(value: any): asserts value is Value {
   }
 }
 
-export default function Input({ inputTag, name, value }: InputProps) {
+export default function Input({ inputTag, name, value }: InputSideProps) {
   const { dispatch } = useShoeContext();
   return (
     <div className="flex p-3 gap-5">

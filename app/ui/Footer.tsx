@@ -8,7 +8,7 @@ export default function Footer() {
     <div className="flex flex-col gap-[50px] py-5 justify-between items-center">
       <div className="flex gap-[20px]">
         <Image src={logo} alt="logo" width={100} height={100} />
-        <p className="text-xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-800 font-semibold">
+        <p className="text-xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-600 font-semibold">
           ACCESORIOS
         </p>
       </div>

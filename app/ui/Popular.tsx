@@ -1,5 +1,8 @@
+"use client";
+import { useEffect } from "react";
 import { fetchProducts } from "../lib/data";
 import Card from "./Card";
+import { useShoeContext } from "./calzados/context/ShoeContext";
 
 function PopulateContent({ products }: { products: Record<string, any>[] }) {
   return (
@@ -23,16 +26,22 @@ function PopulateContent({ products }: { products: Record<string, any>[] }) {
   );
 }
 
-export default async function Popular() {
-  const { products } = await fetchProducts();
-
+export default function Popular() {
+  const { state, dispatch } = useShoeContext();
+  useEffect(() => {
+    async function fetchDataHome() {
+      const { products } = await fetchProducts();
+      dispatch({ type: "firstFetchHomePage", payload: products });
+    }
+    fetchDataHome();
+  }, []);
   return (
     <div>
       <p className="p-6 text-gray-800 text-5xl font-bold text-center">
         PRODUCTOS POPULARES
       </p>
       <hr className="bg-gray-600 w-[200px] h-[6px] mx-auto rounded" />
-      <PopulateContent products={products} />
+      <PopulateContent products={state.firstFetchHomePage} />
     </div>
   );
 }
