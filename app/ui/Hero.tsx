@@ -11,20 +11,17 @@ export default function Hero() {
         src={woman}
         alt="woman"
       />
-      <div className="pl-2 flex flex-col z-30 pr-36 md:pr-64">
+      <div className="pl-4 flex flex-col z-30 pr-36 md:pr-64">
         <p className="text-sm text-gray-900">
           Colección Primavera / Verano 2017
         </p>
-        <p className="my-5 text-xl sm:text-3xl md:text-7xl text-gray-800">
+        <p className="my-5 text-xl sm:text-3xl md:text-6xl text-gray-800">
           Obtenga hasta un 30% de descuento en recién llegados
         </p>
-        <div className="text-xl text-gray-800 p-5">
-          <Link
-            href="/"
-            className="hover:shadow-xl p-2 rounded-sm bg-red-500 text-white"
-          >
-            Compra ahora
-          </Link>
+        <div className="text-xl text-gray-800">
+          <button className="hover:shadow-xl p-2 rounded-sm bg-red-500 text-white">
+            <Link href="/">Compra ahora</Link>
+          </button>
         </div>
       </div>
     </div>

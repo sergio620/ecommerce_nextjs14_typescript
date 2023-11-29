@@ -67,12 +67,13 @@ export default function Navbar() {
       <nav className="w-full ">
         <ul className="flex flex-col items-center w-full ">
           {links.map((link, index) => (
-            <li
+            <button
               key={index}
               className={`flex flex-col justify-center items-center border-b-2 border-gray-500 w-full  hover:bg-gray-200 h-11`}
+              onClick={() => setIsOpen(false)}
             >
               <Link href={link.href}>{link.child}</Link>
-            </li>
+            </button>
           ))}
         </ul>
       </nav>
@@ -114,9 +115,9 @@ export default function Navbar() {
         <nav className="flex items-center h-full ">
           <ul className="h-full flex items-center ">
             {links.map((link, index) => (
-              <li
+              <button
                 key={index}
-                className={`${link.breakpoint} items-center px-5 hover:bg-gray-200 h-11 border-r-2 border-gray-500`}
+                className={`${link.breakpoint} items-center px-5 hover:bg-gray-200 h-11 `}
               >
                 <Link
                   href={link.href}
@@ -129,7 +130,7 @@ export default function Navbar() {
                     </div>
                   )}
                 </Link>
-              </li>
+              </button>
             ))}
           </ul>
           <button

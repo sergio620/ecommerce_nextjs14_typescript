@@ -24,7 +24,7 @@ export default function ShoeItems() {
         return (
           <div
             key={index2}
-            className="flex justify-between py-3 border-y border-gray-300"
+            className="flex justify-between p-3 border border-gray-300 my-2 rounded shadow"
           >
             <div className="flex justify-center">
               <Image
@@ -54,7 +54,7 @@ export default function ShoeItems() {
             <div className="flex flex-col justify-center">
               <div className="flex gap-5 justify-between py-1">
                 <div className=" text-sm font-semibold">Precio unitario:</div>
-                <div className="mt-auto">S/ {item2.newPrice}</div>
+                <div className="mt-auto  whitespace-nowrap">S/ {item2.newPrice}</div>
               </div>
               <div className="flex gap-5 justify-between py-1">
                 <div className=" text-sm font-semibold">Cantidad:</div>
@@ -65,14 +65,14 @@ export default function ShoeItems() {
                   Precio Total <br />
                   del Producto:
                 </div>
-                <div className="mt-auto">
+                <div className="mt-auto whitespace-nowrap">
                   S/ {state.subtotalItem[item2._id]}
                 </div>
               </div>
             </div>
-            <div className="relative">
+            <div className="">
               <IoMdClose
-                className="w-[28px] h-[28px] absolute top-2 right-5 hover:bg-gray-300 cursor-pointer  text-gray-600"
+                className="w-[28px] h-[28px]  hover:bg-gray-300 cursor-pointer  text-gray-600"
                 onClick={() => {
                   dispatch({
                     type: "deleteFromCart",

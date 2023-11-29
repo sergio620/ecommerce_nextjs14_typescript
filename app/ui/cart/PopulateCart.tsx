@@ -14,15 +14,15 @@ export default function PopulateCart(): JSX.Element {
         Carro de compra
       </div>
       {/*  React does not allow you to render objects. https://stackoverflow.com/questions/72236090/type-name-string-is-not-assignable-to-type-reactnode */}
-      <div className="flex gap-12">
+      <div className="flex flex-col items-center md:flex-row gap-12">
         <div className="flex flex-col grow">
           <ShoeItems />
           <GeneralItemsCart />
         </div>
-        <div className="w-[300px]">
+        <div className="self-start order-first border border-gray-300 w-full rounded p-3 md:order-last md:w-[300px]">
           <div className="my-2 flex justify-between">
             <div>Subtotal</div>
-            <div>{state.subtotalGeneral}</div>
+            <div>S/ {state.subtotalGeneral}</div>
           </div>
           <div className="my-2 flex justify-between">
             <div>Delivery</div>
@@ -34,7 +34,9 @@ export default function PopulateCart(): JSX.Element {
           </div>
           <div className="my-2 flex justify-between">
             <div>Total:</div>
-            <div>S/ {delivery + descuento}</div>
+            <div className="font-bold">
+              S/ {delivery + descuento + state.subtotalGeneral}
+            </div>
           </div>
           <button className="w-full mt-auto bg-red-500 p-3 text-white">
             Verificar

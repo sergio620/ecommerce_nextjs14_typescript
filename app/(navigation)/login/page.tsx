@@ -3,7 +3,7 @@ import woman from "@/public/woman.png";
 import Image from "next/image";
 export default function Login() {
   return (
-    <div className="bg-white md:flex">
+    <div className=" md:flex">
       <div className="hidden md:block relative md:w-1/2  bg-orange-500">
         <Image
           src="https://i.pinimg.com/originals/0e/b4/c2/0eb4c25fb70ae3f291d9d5523fda1269.jpg"
@@ -18,8 +18,8 @@ export default function Login() {
           className="absolute z-20 object-contain hidden md:block"
         />
       </div>
-      <div className="grow h-screen flex justify-center items-center">
-        <div className="bg-white border border-gray-200 rounded-md shadow-md flex flex-col items-center p-5 gap-5">
+      <div className="grow h-full py-3 flex justify-center items-center">
+        <div className="border border-gray-200 rounded-md shadow-md flex flex-col items-center p-5 gap-5">
           <div className="text-gray-600 font-bold p-5">INGRESAR</div>
           <div className="flex flex-col items-center gap-2">
             <div className="text-gray-600 text-sm place-self-start">

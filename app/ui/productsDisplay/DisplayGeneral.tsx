@@ -16,7 +16,7 @@ export default function DisplayGeneral({
   console.log("DisplayGeneral: ", data);
 
   return (
-    <div className="flex">
+    <div className="flex items-center flex-col md:flex-row">
       <div className="flex w-[65%] h-screen p-5">
         <div className="relative w-full h-full">
           <Image
@@ -27,11 +27,11 @@ export default function DisplayGeneral({
           />
         </div>
       </div>
-      <div className="p-5 grow flex justify-center">
+      <div className="order-first md:order-last p-5 grow flex justify-center">
         <div className="p-5 rounded border border-gray-400">
           <p className="py-3 text-[24px] text">{data.title}</p>
-          <p className="py-3 line-through">{data.price}</p>
-          <p className="py-3 text-[26px] font-bold">${data.price}</p>
+          <p className="pt-3 line-through">{data.price}</p>
+          <p className="pb-3 text-[26px] font-bold">${data.price}</p>
           <div className="py-3 flex">
             <FaStar className="text-yellow-600 text-[24px]" />
             <FaStar className="text-yellow-600 text-[24px]" />
