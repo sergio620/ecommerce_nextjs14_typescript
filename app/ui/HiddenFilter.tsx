@@ -1,6 +1,9 @@
-import { ElementsSidebar } from "@/app/lib/definitions";
-import Input from "./Input";
-import { useShoeContext } from "./context/ShoeContext";
+"use client";
+import React from "react";
+import { ElementsSidebar } from "../lib/definitions";
+import Input from "./calzados/Input";
+import { useShoeContext } from "./calzados/context/ShoeContext";
+import { FaTimes } from "react-icons/fa";
 
 const elementsSidebar: ElementsSidebar = [
   {
@@ -35,16 +38,27 @@ const elementsSidebar: ElementsSidebar = [
     ],
   },
 ];
-
-export default function Sidebar() {
-  const { state } = useShoeContext();
+export default function HiddenFilter() {
+  const { state, dispatch } = useShoeContext();
   return (
     <div
-      className={`w-0 transition-all overflow-hidden duration-500 ${
-        state.isOpenSideFilter ? "w-[210px] " : ""
-      } hidden md:block pt-12 flex flex-col`}
+      className={`bg-slate-50/90 ${
+        state.isOpenSideFilter ? "left-0 " : "-left-1/2 "
+      }top-0 w-1/2 fixed md:hidden transition-all duration-500 z-40`}
     >
-      <div className="bg-gray-200">
+      <button
+        className="h-11"
+        onClick={() => {
+          dispatch({ type: "sideHiddenFilter" });
+        }}
+      >
+        <FaTimes className="block h-5 w-10 " />
+      </button>
+      <div
+        className={`${
+          state.isOpenSideFilter ? "block " : ""
+        }pl-3 flex flex-col`}
+      >
         {elementsSidebar.map((item, index) => (
           <div key={index} className="border-t border-gray-500">
             <div className="p-3 font-bold">{item.sectionTag}</div>

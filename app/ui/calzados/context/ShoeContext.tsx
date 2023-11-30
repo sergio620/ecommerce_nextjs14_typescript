@@ -39,7 +39,9 @@ function reducer(state: State, action: Action): State {
       if (payload) {
         return { ...state, data: payload };
       } else {
-        throw new Error(`No se obtuvieron datos en el fetch"`);
+        throw new Error(
+          `No se obtuvieron datos en el fetch en afterFetchData type"`
+        );
       }
     case "afterEveryKeyPressInSearchBox":
       //si solo dejamos en la condicion "inputSearchBox", no estariamos analizando el caso en que "inputSearchBox" sea string vacio "" ya que ese valor es falso. Y en consecuencia no vas a poder borrar el ultimo caracter en la caja de busqueda
@@ -47,9 +49,20 @@ function reducer(state: State, action: Action): State {
         return { ...state, search: inputSearchBox };
       }
     case "afterPressEnter":
-      if (keyEnterPressed === "Enter") {
-        return { ...state, switchKeydown: !state.switchKeydown };
+      if (keyEnterPressed) {
+        if (keyEnterPressed.toString() === "Enter") {
+          return { ...state, switchKeydown: !state.switchKeydown };
+        } else {
+          if (inputSearchBox || inputSearchBox === "") {
+            return { ...state, search: inputSearchBox };
+          } else {
+            throw new Error("inputSearchBox || inputSearchBox ===`` es falso");
+          }
+        }
+      } else {
+        throw new Error("keyEnterPressed is undefined");
       }
+
     case "addToCart":
       if (identifier) {
         if (unitPrice) {
@@ -72,10 +85,10 @@ function reducer(state: State, action: Action): State {
             },
           };
         } else {
-          throw new Error("unitPrice is undefined");
+          throw new Error("unitPrice is undefined in addToCart type");
         }
       } else {
-        throw new Error("identifier is undefined");
+        throw new Error("identifier is undefined in addToCart type");
       }
     case "deleteFromCart":
       if (identifier) {
@@ -95,8 +108,10 @@ function reducer(state: State, action: Action): State {
           };
         }
       } else {
-        throw new Error("identifier is undefined");
+        throw new Error("identifier is undefined in deleteFromCart type");
       }
+    case "setIsOpen":
+      return { ...state, isOpenMenu: !state.isOpenMenu };
     //para almacenar todos los productos obtenidos fel primer fetch a la base de datos, esto con el objetivo
     // de luego realizar un filtrado al entrar en la pagina cart.
     case "firstFetchShoePage":
@@ -109,6 +124,8 @@ function reducer(state: State, action: Action): State {
       } else {
         throw new Error(`No se obtuvieron datos en el fetch"`);
       }
+    case "sideHiddenFilter":
+      return { ...state, isOpenSideFilter: !state.isOpenSideFilter };
     default:
       return state;
   }
@@ -130,6 +147,8 @@ const initialvalue: State = {
   subtotalItem: {},
   subtotalGeneral: 0,
   firstFetchHomePage: [],
+  isOpenMenu: false,
+  isOpenSideFilter: false,
 };
 
 export default function ShoeWrapper({

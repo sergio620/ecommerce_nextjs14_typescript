@@ -17,7 +17,11 @@ type Company = "all" | "nike" | "adidas" | "puma" | "vans";
 export type Name = "category" | "price" | "color" | "company";
 //when a user click in input o button the attribute "value" only can be this values
 export type Value = Category | Price | Color | Company;
-
+export interface LinkItem {
+  href: string;
+  child: string | React.JSX.Element;
+  breakpoint: string;
+}
 //https://stackoverflow.com/questions/72170275/typescript-object-key-as-key-of-another-object
 /* export type FilterForDatabase = Record<
   keysInDataBase,
@@ -59,6 +63,8 @@ export type State = {
   subtotalItem: Record<string, number>;
   subtotalGeneral: number;
   firstFetchHomePage: Record<string, any>[];
+  isOpenMenu: boolean; //para detectar si el menu de navegacion ("hambuerguer icon") a sido abierto (clickado)
+  isOpenSideFilter: boolean;
 };
 export type Action = {
   type:
@@ -69,7 +75,9 @@ export type Action = {
     | "addToCart"
     | "firstFetchShoePage"
     | "firstFetchHomePage"
-    | "deleteFromCart";
+    | "deleteFromCart"
+    | "setIsOpen"
+    | "sideHiddenFilter";
   inputSearchBox?: string;
   name?: Name;
   value?: Value;

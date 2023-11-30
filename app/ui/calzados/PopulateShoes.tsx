@@ -32,7 +32,7 @@ export default function PopulateShoes() {
   }, []);
 
   return (
-    <div className="p-12 grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-5">
+    <div className="grow transition-all duration-500 p-12 grid grid-cols-2 gap-1 md:grid-cols-3 md:gap-5">
       {/* https://www.youtube.com/watch?v=8K1N3fE-cDs min 4:50 Reason of question mark*/}
       {state.data.map((item, index) => {
         return (

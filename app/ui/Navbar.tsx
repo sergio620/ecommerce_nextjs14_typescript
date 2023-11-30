@@ -8,26 +8,22 @@ import { FaSearch } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FaBars } from "react-icons/fa6";
-import { FaTimes } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 import { useShoeContext } from "./calzados/context/ShoeContext";
-interface links {
-  href: string;
-  child: string | React.JSX.Element;
-  breakpoint: string;
-}
+import HiddenBar from "./HiddenBar";
+import { LinkItem } from "../lib/definitions";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400"] });
 export default function Navbar() {
   const { dispatch, state } = useShoeContext();
-  const links: links[] = [
+  const links: LinkItem[] = [
     { href: "/", child: "Home", breakpoint: "hidden md:flex" },
     {
       href: "/products/calzados",
       child: "Calzados",
       breakpoint: "hidden md:flex",
     },
-    {
+    /*  {
       href: "/products/hombres",
       child: "Hombres",
       breakpoint: "hidden md:flex",
@@ -36,7 +32,7 @@ export default function Navbar() {
       href: "/products/mujeres",
       child: "Mujeres",
       breakpoint: "hidden md:flex",
-    },
+    }, */
     {
       href: "/login",
       child: <FaUser className="text-gray-600 h-5 w-10" />,
@@ -48,37 +44,6 @@ export default function Navbar() {
       breakpoint: "flex",
     },
   ];
-  const [isOpen, setIsOpen] = React.useState<boolean>(false);
-  const hiddenBar = (
-    <div
-      className={`transition-all duration-500 w-full md:w-1/2 fixed z-50 bg-slate-50/90 top-0 ${
-        isOpen ? "right-0" : "right-[-800px]"
-      }  flex flex-col items-center`}
-    >
-      <button
-        className="self-end h-11"
-        onClick={() => {
-          setIsOpen(!isOpen);
-        }}
-      >
-        <FaTimes className="block h-5 w-10 " />
-      </button>
-
-      <nav className="w-full ">
-        <ul className="flex flex-col items-center w-full ">
-          {links.map((link, index) => (
-            <button
-              key={index}
-              className={`flex flex-col justify-center items-center border-b-2 border-gray-500 w-full  hover:bg-gray-200 h-11`}
-              onClick={() => setIsOpen(false)}
-            >
-              <Link href={link.href}>{link.child}</Link>
-            </button>
-          ))}
-        </ul>
-      </nav>
-    </div>
-  );
 
   return (
     <>
@@ -89,7 +54,7 @@ export default function Navbar() {
           <Image src={logo} alt="logo" width={100} height={100} />
         </div>
         {/* Renderiza la barra de busqueda solo si esta en la pagina /calzados */}
-        {usePathname() === "/calzados" && (
+        {usePathname() === "/products/calzados" && (
           <div className="rounded flex h-[60px] grow p-[10px]">
             <input
               className="pl-5 grow h-[40px] h-full py-[9px] bg-[#F7F6F6]"
@@ -135,14 +100,14 @@ export default function Navbar() {
           </ul>
           <button
             onClick={() => {
-              setIsOpen(!isOpen);
+              dispatch({ type: "setIsOpen" });
             }}
           >
             <FaBars className="md:hidden h-5 w-10" />
           </button>
         </nav>
       </div>
-      {hiddenBar}
+      <HiddenBar links={links} />
     </>
   );
 }

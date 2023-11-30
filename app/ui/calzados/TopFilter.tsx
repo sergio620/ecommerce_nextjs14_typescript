@@ -40,9 +40,9 @@ function assertValueIsDefined(value: any): asserts value is Value {
 export default function TopFilter() {
   const { dispatch } = useShoeContext();
   return (
-    <div className="px-12 pt-8 flex flex-col">
+    <div className="flex flex-col grow">
       <h2 className="font-bold text-xl mb-3">Recomendado</h2>
-      <div className="flex gap-4">
+      <div className="flex gap-4 whitespace-nowrap flex-wrap">
         {filter.map((item, index) => (
           <button
             key={index}
