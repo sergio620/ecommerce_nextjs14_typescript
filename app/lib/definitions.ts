@@ -54,7 +54,7 @@ export type SelectedFilter = {
 //---------Types for Dispatch-------
 export type State = {
   switchKeydown: boolean;
-  search: string;
+  inputSearchBox: string;
   selectedFilter: SelectedFilter;
   data: Record<string, any>[];
   cart: Record<string, number>;
@@ -65,6 +65,7 @@ export type State = {
   firstFetchHomePage: Record<string, any>[];
   isOpenMenu: boolean; //para detectar si el menu de navegacion ("hambuerguer icon") a sido abierto (clickado)
   isOpenSideFilter: boolean;
+  inputChecked: string;
 };
 export type Action = {
   type:
@@ -77,8 +78,9 @@ export type Action = {
     | "firstFetchHomePage"
     | "deleteFromCart"
     | "setIsOpen"
-    | "sideHiddenFilter";
-  inputSearchBox?: string;
+    | "sideHiddenFilter"
+    | "clearFilter";
+  setInputSearchBox?: string;
   name?: Name;
   value?: Value;
   keyEnterPressed?: string;
@@ -86,6 +88,7 @@ export type Action = {
   identifier?: string;
   firstFetchShoes?: Record<string, any>[];
   unitPrice?: number;
+  setInputChecked?: string;
 };
 //----------Initial Value for inputs left Side bar------------------------
 export type InitialValue = {

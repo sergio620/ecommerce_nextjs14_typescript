@@ -13,6 +13,11 @@ import { useShoeContext } from "./calzados/context/ShoeContext";
 import HiddenBar from "./HiddenBar";
 import { LinkItem } from "../lib/definitions";
 
+function assertIsDefined(val: any): asserts val is string {
+  if (typeof val !== "string") {
+    throw new Error("e.target.value is null or undefined in onKeyDown");
+  }
+}
 const poppins = Poppins({ subsets: ["latin"], weight: ["400"] });
 export default function Navbar() {
   const { dispatch, state } = useShoeContext();
@@ -60,16 +65,21 @@ export default function Navbar() {
               className="pl-5 grow h-[40px] h-full py-[9px] bg-[#F7F6F6]"
               type="text"
               placeholder="Buscar producto"
-              value={state.search}
+              value={state.inputSearchBox}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 dispatch({
                   type: "afterEveryKeyPressInSearchBox",
-                  inputSearchBox: e.target.value,
+                  setInputSearchBox: e.target.value,
                 });
               }}
-              onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
-                dispatch({ type: "afterPressEnter", keyEnterPressed: e.key })
-              }
+              onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                let val = e.currentTarget.value;
+                assertIsDefined(val);
+                dispatch({
+                  type: "afterPressEnter",
+                  keyEnterPressed: e.key,
+                });
+              }}
             />
             <button className="border-gray200 border w-[45px]">
               <FaSearch className="text-gray-600 h-5 w-full" />

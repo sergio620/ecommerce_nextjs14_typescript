@@ -14,7 +14,7 @@ function assertHasId(val: any): asserts val is string {
 export default function CardShoe(props: Record<string, any>) {
   const { dispatch } = useShoeContext();
   return (
-    <div className="border border-gray-200 group pt-5 flex flex-col justify-center items-center rounded hover:shadow-xl">
+    <div className="border border-gray-200 h-[287.39px] group pt-5 flex flex-col justify-center items-center rounded hover:shadow-xl">
       <Link
         href={`/products/calzados/${props.id}`}
         className="flex flex-col h-full w-full items-center"

@@ -15,25 +15,40 @@ function reducer(state: State, action: Action): State {
     name,
     value,
     payload,
-    inputSearchBox,
+    setInputSearchBox,
     keyEnterPressed,
     identifier,
     firstFetchShoes,
     unitPrice,
+    setInputChecked,
   } = action;
 
   console.log("isNaN(state.cart.identifier): ", isNaN(state.cart.identifier));
   console.log("state.cart ", state.cart);
+  console.log("setInputSearchBox: ", setInputSearchBox);
+  console.log("typeof setInputSearchBox: ", typeof setInputSearchBox);
+  console.log("setInputChecked !== undefined: ", setInputChecked !== undefined);
+  console.log("setInputChecked === undefined: ", setInputChecked === undefined);
+  console.log("setInputChecked: ", setInputChecked);
+  console.log("typeof setInputChecked: ", typeof setInputChecked);
 
   switch (type) {
     case "clickedInput":
       if (name) {
-        return {
-          ...state,
-          selectedFilter: { ...state.selectedFilter, [name]: value },
-        };
+        if (value) {
+          /*  if (setInputChecked !== undefined) { */
+          return {
+            ...state,
+            selectedFilter: { ...state.selectedFilter, [name]: value },
+            inputChecked: value,
+          };
+        } else {
+          throw new Error("value is undefined");
+        }
       } else {
-        throw new Error(`Para actualizar el filtro falta el atributo "name"`);
+        throw new Error(
+          `Para actualizar el filtro falta el atributo "name" en type clickedInput `
+        );
       }
     case "afterFetchData":
       if (payload) {
@@ -44,20 +59,25 @@ function reducer(state: State, action: Action): State {
         );
       }
     case "afterEveryKeyPressInSearchBox":
-      //si solo dejamos en la condicion "inputSearchBox", no estariamos analizando el caso en que "inputSearchBox" sea string vacio "" ya que ese valor es falso. Y en consecuencia no vas a poder borrar el ultimo caracter en la caja de busqueda
-      if (inputSearchBox || inputSearchBox === "") {
-        return { ...state, search: inputSearchBox };
+      //si solo dejamos en la condicion "setInputSearchBox", no estariamos analizando el caso en que "setInputSearchBox" sea string vacio "" ya que ese valor es falso. Y en consecuencia no vas a poder borrar el ultimo caracter en la caja de busqueda
+      if (setInputSearchBox || setInputSearchBox === "") {
+        return { ...state, inputSearchBox: setInputSearchBox };
+      } else {
+        throw new Error(
+          "setInputSearchBox || setInputSearchBox ===`` es falso"
+        );
       }
     case "afterPressEnter":
       if (keyEnterPressed) {
         if (keyEnterPressed.toString() === "Enter") {
           return { ...state, switchKeydown: !state.switchKeydown };
         } else {
-          if (inputSearchBox || inputSearchBox === "") {
-            return { ...state, search: inputSearchBox };
+          return state;
+          /*   if (setInputSearchBox || setInputSearchBox === "") {
+            return { ...state, search: setInputSearchBox };
           } else {
-            throw new Error("inputSearchBox || inputSearchBox ===`` es falso");
-          }
+            throw new Error("setInputSearchBox || setInputSearchBox ===`` es falso");
+          } */
         }
       } else {
         throw new Error("keyEnterPressed is undefined");
@@ -126,14 +146,26 @@ function reducer(state: State, action: Action): State {
       }
     case "sideHiddenFilter":
       return { ...state, isOpenSideFilter: !state.isOpenSideFilter };
+    case "clearFilter":
+      return {
+        ...state,
+        selectedFilter: {
+          category: "all",
+          price: "all",
+          color: "all",
+          company: "all",
+        },
+         inputChecked: "all",
+      };
+
     default:
       return state;
   }
 }
 
-const initialvalue: State = {
+const initialState: State = {
   switchKeydown: false,
-  search: "",
+  inputSearchBox: "",
   selectedFilter: {
     category: "all",
     price: "all",
@@ -149,6 +181,7 @@ const initialvalue: State = {
   firstFetchHomePage: [],
   isOpenMenu: false,
   isOpenSideFilter: false,
+  inputChecked: "",
 };
 
 export default function ShoeWrapper({
@@ -156,7 +189,7 @@ export default function ShoeWrapper({
 }: {
   children: React.ReactNode;
 }) {
-  const [state, dispatch] = useReducer(reducer, initialvalue);
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <ShoeContext.Provider value={{ state, dispatch }}>
       {children}

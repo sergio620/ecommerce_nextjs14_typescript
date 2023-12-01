@@ -17,7 +17,8 @@ function assertValueIsDefined(value: any): asserts value is Value {
 }
 
 export default function Input({ inputTag, name, value }: InputSideProps) {
-  const { dispatch } = useShoeContext();
+  const { dispatch, state } = useShoeContext();
+  /*  const a = { checked: true }; */
   return (
     <div className="flex p-3 gap-5">
       <input
@@ -30,11 +31,14 @@ export default function Input({ inputTag, name, value }: InputSideProps) {
             type: "clickedInput",
             name: name,
             value: value,
+            setInputChecked: e.target.value,
           });
         }}
         type="radio"
         name={name}
         value={value}
+      //https://stackoverflow.com/questions/73524522/trying-to-reset-a-group-of-radio-button-in-react-through-a-button
+       checked={state.inputChecked===value}
       />
       <div>{inputTag}</div>
     </div>

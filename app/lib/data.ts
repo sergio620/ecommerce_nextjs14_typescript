@@ -31,7 +31,7 @@ function assertIsArray(value: any): asserts value is Record<string, any>[] {
 export async function fetchShoes(state?: State) {
   //if para verificar si "state" se paso como argumento a esta funcion, de lo contrario hara un fetch normal
   if (state) {
-    const { selectedFilter, search } = state;
+    const { selectedFilter, inputSearchBox } = state;
 
     //https://bobbyhadz.com/blog/typescript-element-implicitly-has-any-type-expression#solve-the-error-using-a-type-assertion
     let keyFilter: keyof SelectedFilter;
@@ -45,9 +45,9 @@ export async function fetchShoes(state?: State) {
       }
     }
 
-    if (search !== "") {
+    if (inputSearchBox !== "") {
       console.log(`params["title"] !== ""`);
-      params["title"] = search;
+      params["title"] = inputSearchBox;
     }
     console.log("params: ", params);
 

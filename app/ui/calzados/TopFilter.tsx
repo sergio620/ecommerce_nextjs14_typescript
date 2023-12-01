@@ -2,6 +2,7 @@
 import React from "react";
 import { useShoeContext } from "./context/ShoeContext";
 import { Name, Value } from "@/app/lib/definitions";
+import Link from "next/link";
 
 const filter = [
   {
@@ -58,13 +59,21 @@ export default function TopFilter() {
                 value: value,
               });
             }}
-            className="focus:bg-sky-300 border border-gray-300 rounded p-3 "
+            className="focus:bg-sky-300 border border-gray-300 rounded p-3 hover:bg-gray-300"
             value={item.value}
             name="company"
           >
             {item.inputTag}
           </button>
         ))}
+        <Link href={"/products/calzados"}>
+          <button
+            className="font-bold p-3 hover:rounded hover:bg-gray-300"
+            onClick={() => dispatch({ type: "clearFilter" })}
+          >
+            Limpiar filtros
+          </button>
+        </Link>
       </div>
     </div>
   );
