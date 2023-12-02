@@ -76,9 +76,9 @@ export default function SidebarShoePage() {
   console.log("SidebarShoePage rendering");
   return (
     <div
-      className={`w-0 transition-all overflow-hidden duration-500 ${
-        state.isOpenSideFilter ? "w-[210px] " : ""
-      } hidden md:block pt-12 flex flex-col`}
+      className={`hidden md:block transition-all overflow-hidden duration-500 ${
+        state.isOpenSideFilter ? "w-[210px] " : "w-0 "
+      } pt-12 flex flex-col`}
     >
       <div className="bg-gray-200">
         {elementsSidebar.map((item, index) => (

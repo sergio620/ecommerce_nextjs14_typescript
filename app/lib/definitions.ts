@@ -72,7 +72,7 @@ export type State = {
   firstFetchHomePage: Record<string, any>[];
   isOpenMenu: boolean; //para detectar si el menu de navegacion ("hambuerguer icon") a sido abierto (clickado)
   isOpenSideFilter: boolean;
-  inputChecked: string;
+ /*  inputChecked: string; */
 };
 export type Action = {
   type:
@@ -95,7 +95,7 @@ export type Action = {
   identifier?: string;
   firstFetchShoes?: Record<string, any>[];
   unitPrice?: number;
-  setInputChecked?: Category | Price | Color;
+ /*  setInputChecked?: Category | Price | Color; */
 };
 //----------Initial Value for inputs left Side bar------------------------
 export type InitialValue = {

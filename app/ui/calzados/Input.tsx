@@ -26,11 +26,11 @@ function assertValueIsDefined(
 
 export default function Input({ inputTag, name, value, id }: InputSideProps) {
   const { dispatch, state } = useShoeContext();
-  console.log("Input / state.inputChecked:", state.inputChecked);
+ /*  console.log("Input / state.inputChecked:", state.inputChecked); */
   console.log("Input / value: ", value);
   console.log(
     "Input / state.inputChecked === value: ",
-    state.inputChecked === value
+    /* state.inputChecked === value */
   );
   /*   console.log("Input / state.inputChecked", state.inputChecked);
    */ return (
@@ -45,7 +45,7 @@ export default function Input({ inputTag, name, value, id }: InputSideProps) {
             type: "clickedInput",
             id: Id,
             value: val,
-            setInputChecked: val,
+           /*  setInputChecked: val, */
           });
         }}
         type="radio"

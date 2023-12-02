@@ -20,34 +20,34 @@ function reducer(state: State, action: Action): State {
     identifier,
     firstFetchShoes,
     unitPrice,
-    setInputChecked,
+    /*  setInputChecked, */
   } = action;
 
   console.log("isNaN(state.cart.identifier): ", isNaN(state.cart.identifier));
   console.log("state.cart ", state.cart);
   console.log("setInputSearchBox: ", setInputSearchBox);
   console.log("typeof setInputSearchBox: ", typeof setInputSearchBox);
-  console.log("setInputChecked !== undefined: ", setInputChecked !== undefined);
+  /* console.log("setInputChecked !== undefined: ", setInputChecked !== undefined);
   console.log("setInputChecked === undefined: ", setInputChecked === undefined);
   console.log("setInputChecked: ", setInputChecked);
-  console.log("typeof setInputChecked: ", typeof setInputChecked);
+  console.log("typeof setInputChecked: ", typeof setInputChecked); */
 
   switch (type) {
     case "clickedInput":
       if (id) {
         if (value) {
-          if (setInputChecked) {
+          /* if (setInputChecked) { */
+          return {
+            ...state,
+            selectedFilter: { ...state.selectedFilter, [id]: value },
+            /*  inputChecked: setInputChecked, */
+          };
+          /*  } else {
             return {
               ...state,
               selectedFilter: { ...state.selectedFilter, [id]: value },
-              inputChecked: setInputChecked,
             };
-          } else {
-            return {
-              ...state,
-              selectedFilter: { ...state.selectedFilter, [id]: value },
-            };
-          }
+          } */
         } else {
           throw new Error("value is undefined");
         }
@@ -161,7 +161,8 @@ function reducer(state: State, action: Action): State {
           color: "all",
           company: "all",
         },
-        inputChecked: "all",
+        inputSearchBox: "",
+        /*  inputChecked: "all", */
       };
 
     default:
@@ -187,7 +188,7 @@ const initialState: State = {
   firstFetchHomePage: [],
   isOpenMenu: false,
   isOpenSideFilter: false,
-  inputChecked: "all",
+  /*  inputChecked: "all", */
 };
 
 export default function ShoeWrapper({

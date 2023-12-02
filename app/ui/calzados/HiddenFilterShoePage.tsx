@@ -80,7 +80,7 @@ export default function HiddenFilterShoePage() {
     <div
       className={`bg-slate-50/90 ${
         state.isOpenSideFilter ? "w-1/2 " : "w-0 "
-      }top-0 left-0 fixed md:w-0 transition-all h-screen duration-500 z-40 overflow-y-scroll`} //no usar hidden (display: none) mejor usar width 0px o w-0 para luego realizar transiciones de 0px a 100%
+      }top-0 left-0 fixed md:hidden transition-all h-screen duration-500 z-40 overflow-y-scroll`} //no usar hidden (display: none) mejor usar width 0px o w-0 para luego realizar transiciones de 0px a 100%
     >
       <button
         className="h-11"
