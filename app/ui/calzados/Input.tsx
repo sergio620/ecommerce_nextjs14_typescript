@@ -1,44 +1,59 @@
 "use client";
 import { ChangeEvent } from "react";
 import { useShoeContext } from "./context/ShoeContext";
-import { InputSideProps, Name, Value } from "@/app/lib/definitions";
+import {
+  Category,
+  Color,
+  Id,
+  InputSideProps,
+  Price,
+} from "@/app/lib/definitions";
 
-//asegurar que el elemento input tiene la propiedad "e.currentTarget.name" y que esta es igual a los valores contenidos del type "Name"
-function assertNameIsDefined(name: any): asserts name is Name {
+//asegurar que el elemento input tiene la propiedad "e.currentTarget.Id" y que esta es igual a los valores contenidos del type "Name"
+function assertIdIsDefined(name: any): asserts name is Id {
   if (name === undefined || name === null) {
-    throw new Error("e.currentTarget.name is undefined or null");
+    throw new Error("e.currentTarget.Id is undefined or null");
   }
 }
 //asegurar que el elemento input tiene la propiedad "e.currentTarget.value" y que esta es igual a los valores contenidos del type "Value"
-function assertValueIsDefined(value: any): asserts value is Value {
-  if (value === undefined || value === null) {
+function assertValueIsDefined(
+  val: any
+): asserts val is Category | Price | Color {
+  if (val === undefined || val === null) {
     throw new Error("e.currentTarget.value is undefined or null");
   }
 }
 
-export default function Input({ inputTag, name, value }: InputSideProps) {
+export default function Input({ inputTag, name, value, id }: InputSideProps) {
   const { dispatch, state } = useShoeContext();
-  /*  const a = { checked: true }; */
-  return (
+  console.log("Input / state.inputChecked:", state.inputChecked);
+  console.log("Input / value: ", value);
+  console.log(
+    "Input / state.inputChecked === value: ",
+    state.inputChecked === value
+  );
+  /*   console.log("Input / state.inputChecked", state.inputChecked);
+   */ return (
     <div className="flex p-3 gap-5">
       <input
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          let name = e.currentTarget.name;
-          let value = e.currentTarget.value;
-          assertNameIsDefined(name);
-          assertValueIsDefined(value);
+          let Id = e.currentTarget.id;
+          let val = e.currentTarget.value;
+          assertIdIsDefined(Id);
+          assertValueIsDefined(val);
           dispatch({
             type: "clickedInput",
-            name: name,
-            value: value,
-            setInputChecked: e.target.value,
+            id: Id,
+            value: val,
+            setInputChecked: val,
           });
         }}
         type="radio"
         name={name}
         value={value}
-      //https://stackoverflow.com/questions/73524522/trying-to-reset-a-group-of-radio-button-in-react-through-a-button
-       checked={state.inputChecked===value}
+        id={id}
+        //https://stackoverflow.com/questions/73524522/trying-to-reset-a-group-of-radio-button-in-react-through-a-button
+        checked={value === state.selectedFilter[id]}
       />
       <div>{inputTag}</div>
     </div>

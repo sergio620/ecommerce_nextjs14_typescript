@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useShoeContext } from "./context/ShoeContext";
-import { Name, Value } from "@/app/lib/definitions";
+import { Id, Value } from "@/app/lib/definitions";
 import Link from "next/link";
 
 const filter = [
@@ -27,7 +27,7 @@ const filter = [
   },
 ];
 //asegurar que el elemento input tiene la propiedad "e.currentTarget.name" y que esta es igual a los valores contenidos del type "Name"
-function assertNameIsDefined(name: any): asserts name is Name {
+function assertIdIsDefined(name: any): asserts name is Id {
   if (name === undefined || name === null) {
     throw new Error("e.currentTarget.name is undefined or null");
   }
@@ -48,20 +48,21 @@ export default function TopFilter() {
           <button
             key={index}
             onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-              let name = e.currentTarget.name;
-              let value = e.currentTarget.value;
-              assertNameIsDefined(name);
-              assertValueIsDefined(value);
+             /*  let Id = e.currentTarget.id; */
+              let Value = e.currentTarget.value;
+             /*  assertIdIsDefined(Id); */
+              assertValueIsDefined(Value);
               dispatch({
                 type: "clickedInput",
-                name: name,
+                id: "company",
                 //https://stackoverflow.com/questions/66485576/property-value-does-not-exist-on-type-eventtarget-ts2339
-                value: value,
+                value: Value,
               });
             }}
             className="focus:bg-sky-300 border border-gray-300 rounded p-3 hover:bg-gray-300"
             value={item.value}
             name="company"
+            id="company"
           >
             {item.inputTag}
           </button>

@@ -4,7 +4,6 @@ import Link from "next/link";
 import React from "react";
 import logo from "@/public/logo.png";
 import { Poppins } from "next/font/google";
-import { FaSearch } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FaBars } from "react-icons/fa6";
@@ -12,12 +11,8 @@ import { usePathname } from "next/navigation";
 import { useShoeContext } from "./calzados/context/ShoeContext";
 import HiddenBar from "./HiddenBar";
 import { LinkItem } from "../lib/definitions";
+import SearchBox from "./SearchBox";
 
-function assertIsDefined(val: any): asserts val is string {
-  if (typeof val !== "string") {
-    throw new Error("e.target.value is null or undefined in onKeyDown");
-  }
-}
 const poppins = Poppins({ subsets: ["latin"], weight: ["400"] });
 export default function Navbar() {
   const { dispatch, state } = useShoeContext();
@@ -59,33 +54,7 @@ export default function Navbar() {
           <Image src={logo} alt="logo" width={100} height={100} />
         </div>
         {/* Renderiza la barra de busqueda solo si esta en la pagina /calzados */}
-        {usePathname() === "/products/calzados" && (
-          <div className="rounded flex h-[60px] grow p-[10px]">
-            <input
-              className="pl-5 grow h-[40px] h-full py-[9px] bg-[#F7F6F6]"
-              type="text"
-              placeholder="Buscar producto"
-              value={state.inputSearchBox}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                dispatch({
-                  type: "afterEveryKeyPressInSearchBox",
-                  setInputSearchBox: e.target.value,
-                });
-              }}
-              onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-                let val = e.currentTarget.value;
-                assertIsDefined(val);
-                dispatch({
-                  type: "afterPressEnter",
-                  keyEnterPressed: e.key,
-                });
-              }}
-            />
-            <button className="border-gray200 border w-[45px]">
-              <FaSearch className="text-gray-600 h-5 w-full" />
-            </button>
-          </div>
-        )}
+        {usePathname() === "/products/calzados" && <SearchBox />}
         {/* -------------------------------------------------------------------- */}
         <nav className="flex items-center h-full ">
           <ul className="h-full flex items-center ">

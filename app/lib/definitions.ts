@@ -7,14 +7,14 @@ export type Params = {
 
 //https://www.youtube.com/watch?v=6e3PHoN7jj8
 
-type Category = "all" | "sneakers" | "flats" | "sandals" | "heels";
-type Price = "all" | "50" | "100" | "150" | "200";
-type Color = "all" | "black" | "blue" | "red" | "green" | "white";
-type Company = "all" | "nike" | "adidas" | "puma" | "vans";
+export type Category = "all" | "sneakers" | "flats" | "sandals" | "heels";
+export type Price = "all" | "50" | "100" | "150" | "200";
+export type Color = "all" | "black" | "blue" | "red" | "green" | "white";
+export type Company = "all" | "nike" | "adidas" | "puma" | "vans";
 //keys in each document in database
 /* export type keysInDataBase = "category" | "newPrice" | "color" | "company"; */
 //when a user click in input o button the attribute "name" only can be this values
-export type Name = "category" | "price" | "color" | "company";
+export type Id = "category" | "price" | "color" | "company";
 //when a user click in input o button the attribute "value" only can be this values
 export type Value = Category | Price | Color | Company;
 export interface LinkItem {
@@ -41,7 +41,14 @@ export type ElementsSidebar = {
   inputElements: {
     inputTag: string;
     value: Category | Price | Color;
-    name: "category" | "price" | "color";
+    name:
+      | "category"
+      | "price"
+      | "color"
+      | "hidden category"
+      | "hidden price"
+      | "hidden color";
+    id: "category" | "price" | "color";
   }[];
 }[];
 //---selected Filter has this form
@@ -81,14 +88,14 @@ export type Action = {
     | "sideHiddenFilter"
     | "clearFilter";
   setInputSearchBox?: string;
-  name?: Name;
+  id?: Id;
   value?: Value;
   keyEnterPressed?: string;
   payload?: Record<string, any>[];
   identifier?: string;
   firstFetchShoes?: Record<string, any>[];
   unitPrice?: number;
-  setInputChecked?: string;
+  setInputChecked?: Category | Price | Color;
 };
 //----------Initial Value for inputs left Side bar------------------------
 export type InitialValue = {
@@ -102,6 +109,13 @@ export type valueShoeContext = { state: State; dispatch: Dispatch<Action> };
 
 export type InputSideProps = {
   inputTag: string;
-  name: "category" | "price" | "color";
+  id: "category" | "price" | "color";
   value: Category | Price | Color;
+  name:
+    | "category"
+    | "price"
+    | "color"
+    | "hidden category"
+    | "hidden price"
+    | "hidden color";
 };

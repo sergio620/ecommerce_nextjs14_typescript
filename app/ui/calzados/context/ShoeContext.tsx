@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useReducer, useRef } from "react";
+import { createContext, useContext, useReducer } from "react";
 import { State, Action, valueShoeContext } from "@/app/lib/definitions";
 
 //https://www.youtube.com/watch?v=I7dwJxGuGYQ
@@ -12,7 +12,7 @@ const ShoeContext = createContext<valueShoeContext | null>(null);
 function reducer(state: State, action: Action): State {
   const {
     type,
-    name,
+    id,
     value,
     payload,
     setInputSearchBox,
@@ -34,14 +34,20 @@ function reducer(state: State, action: Action): State {
 
   switch (type) {
     case "clickedInput":
-      if (name) {
+      if (id) {
         if (value) {
-          /*  if (setInputChecked !== undefined) { */
-          return {
-            ...state,
-            selectedFilter: { ...state.selectedFilter, [name]: value },
-            inputChecked: value,
-          };
+          if (setInputChecked) {
+            return {
+              ...state,
+              selectedFilter: { ...state.selectedFilter, [id]: value },
+              inputChecked: setInputChecked,
+            };
+          } else {
+            return {
+              ...state,
+              selectedFilter: { ...state.selectedFilter, [id]: value },
+            };
+          }
         } else {
           throw new Error("value is undefined");
         }
@@ -155,7 +161,7 @@ function reducer(state: State, action: Action): State {
           color: "all",
           company: "all",
         },
-         inputChecked: "all",
+        inputChecked: "all",
       };
 
     default:
@@ -181,7 +187,7 @@ const initialState: State = {
   firstFetchHomePage: [],
   isOpenMenu: false,
   isOpenSideFilter: false,
-  inputChecked: "",
+  inputChecked: "all",
 };
 
 export default function ShoeWrapper({
