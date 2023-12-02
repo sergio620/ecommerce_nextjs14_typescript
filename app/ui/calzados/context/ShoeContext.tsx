@@ -7,8 +7,6 @@ import { State, Action, valueShoeContext } from "@/app/lib/definitions";
 //https://www.youtube.com/watch?v=rgp_iCVS8ys
 //https://www.youtube.com/watch?v=6e3PHoN7jj8
 const ShoeContext = createContext<valueShoeContext | null>(null);
-//https://stackoverflow.com/questions/2652319/how-do-you-check-that-a-number-is-nan-in-javascript
-
 function reducer(state: State, action: Action): State {
   const {
     type,
@@ -20,34 +18,16 @@ function reducer(state: State, action: Action): State {
     identifier,
     firstFetchShoes,
     unitPrice,
-    /*  setInputChecked, */
   } = action;
-
-  console.log("isNaN(state.cart.identifier): ", isNaN(state.cart.identifier));
-  console.log("state.cart ", state.cart);
-  console.log("setInputSearchBox: ", setInputSearchBox);
-  console.log("typeof setInputSearchBox: ", typeof setInputSearchBox);
-  /* console.log("setInputChecked !== undefined: ", setInputChecked !== undefined);
-  console.log("setInputChecked === undefined: ", setInputChecked === undefined);
-  console.log("setInputChecked: ", setInputChecked);
-  console.log("typeof setInputChecked: ", typeof setInputChecked); */
 
   switch (type) {
     case "clickedInput":
       if (id) {
         if (value) {
-          /* if (setInputChecked) { */
           return {
             ...state,
             selectedFilter: { ...state.selectedFilter, [id]: value },
-            /*  inputChecked: setInputChecked, */
           };
-          /*  } else {
-            return {
-              ...state,
-              selectedFilter: { ...state.selectedFilter, [id]: value },
-            };
-          } */
         } else {
           throw new Error("value is undefined");
         }
@@ -79,11 +59,6 @@ function reducer(state: State, action: Action): State {
           return { ...state, switchKeydown: !state.switchKeydown };
         } else {
           return state;
-          /*   if (setInputSearchBox || setInputSearchBox === "") {
-            return { ...state, search: setInputSearchBox };
-          } else {
-            throw new Error("setInputSearchBox || setInputSearchBox ===`` es falso");
-          } */
         }
       } else {
         throw new Error("keyEnterPressed is undefined");
@@ -162,7 +137,6 @@ function reducer(state: State, action: Action): State {
           company: "all",
         },
         inputSearchBox: "",
-        /*  inputChecked: "all", */
       };
 
     default:
@@ -188,7 +162,6 @@ const initialState: State = {
   firstFetchHomePage: [],
   isOpenMenu: false,
   isOpenSideFilter: false,
-  /*  inputChecked: "all", */
 };
 
 export default function ShoeWrapper({

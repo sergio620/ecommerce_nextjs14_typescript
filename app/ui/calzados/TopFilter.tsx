@@ -26,12 +26,7 @@ const filter = [
     value: "vans",
   },
 ];
-//asegurar que el elemento input tiene la propiedad "e.currentTarget.name" y que esta es igual a los valores contenidos del type "Name"
-function assertIdIsDefined(name: any): asserts name is Id {
-  if (name === undefined || name === null) {
-    throw new Error("e.currentTarget.name is undefined or null");
-  }
-}
+
 //asegurar que el elemento input tiene la propiedad "e.currentTarget.value" y que esta es igual a los valores contenidos del type "Value"
 function assertValueIsDefined(value: any): asserts value is Value {
   if (value === undefined || value === null) {
@@ -48,9 +43,7 @@ export default function TopFilter() {
           <button
             key={index}
             onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-             /*  let Id = e.currentTarget.id; */
               let Value = e.currentTarget.value;
-             /*  assertIdIsDefined(Id); */
               assertValueIsDefined(Value);
               dispatch({
                 type: "clickedInput",

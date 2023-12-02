@@ -12,7 +12,6 @@ export type Price = "all" | "50" | "100" | "150" | "200";
 export type Color = "all" | "black" | "blue" | "red" | "green" | "white";
 export type Company = "all" | "nike" | "adidas" | "puma" | "vans";
 //keys in each document in database
-/* export type keysInDataBase = "category" | "newPrice" | "color" | "company"; */
 //when a user click in input o button the attribute "name" only can be this values
 export type Id = "category" | "price" | "color" | "company";
 //when a user click in input o button the attribute "value" only can be this values
@@ -23,10 +22,7 @@ export interface LinkItem {
   breakpoint: string;
 }
 //https://stackoverflow.com/questions/72170275/typescript-object-key-as-key-of-another-object
-/* export type FilterForDatabase = Record<
-  keysInDataBase,
-  Category | Price | Color | Company
->; */
+
 //Params before to send a filter to database
 export type SearchParams = {
   category?: Category;
@@ -72,7 +68,6 @@ export type State = {
   firstFetchHomePage: Record<string, any>[];
   isOpenMenu: boolean; //para detectar si el menu de navegacion ("hambuerguer icon") a sido abierto (clickado)
   isOpenSideFilter: boolean;
- /*  inputChecked: string; */
 };
 export type Action = {
   type:
@@ -95,7 +90,6 @@ export type Action = {
   identifier?: string;
   firstFetchShoes?: Record<string, any>[];
   unitPrice?: number;
- /*  setInputChecked?: Category | Price | Color; */
 };
 //----------Initial Value for inputs left Side bar------------------------
 export type InitialValue = {

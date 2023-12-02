@@ -26,14 +26,7 @@ function assertValueIsDefined(
 
 export default function Input({ inputTag, name, value, id }: InputSideProps) {
   const { dispatch, state } = useShoeContext();
- /*  console.log("Input / state.inputChecked:", state.inputChecked); */
-  console.log("Input / value: ", value);
-  console.log(
-    "Input / state.inputChecked === value: ",
-    /* state.inputChecked === value */
-  );
-  /*   console.log("Input / state.inputChecked", state.inputChecked);
-   */ return (
+  return (
     <div className="flex p-3 gap-5">
       <input
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
@@ -45,7 +38,6 @@ export default function Input({ inputTag, name, value, id }: InputSideProps) {
             type: "clickedInput",
             id: Id,
             value: val,
-           /*  setInputChecked: val, */
           });
         }}
         type="radio"
