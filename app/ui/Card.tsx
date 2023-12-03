@@ -33,7 +33,7 @@ export default function Card(props: Record<string, any>) {
           dispatch({
             type: "addToCart",
             identifier: props.id,
-            unitPrice: props.new_price,
+            unitPrice: Number(props.new_price),
           });
         }}
       >

@@ -62,7 +62,7 @@ export default function DisplayGeneral({
               dispatch({
                 type: "addToCart",
                 identifier: idofProduct,
-                unitPrice: data.price,
+                unitPrice: Number(data.price),
               })
             }
           >

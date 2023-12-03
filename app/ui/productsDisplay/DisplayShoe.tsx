@@ -61,7 +61,7 @@ export default function DisplayShoe({
               dispatch({
                 type: "addToCart",
                 identifier: idofProduct,
-                unitPrice: data.newPrice,
+                unitPrice: Number(data.newPrice),
               })
             }
           >

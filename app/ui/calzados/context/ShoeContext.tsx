@@ -69,20 +69,20 @@ function reducer(state: State, action: Action): State {
         if (unitPrice) {
           return {
             ...state,
-            numberItemsInCart: state.numberItemsInCart+1,
-            subtotalGeneral: state.subtotalGeneral + Number(unitPrice),
+            numberItemsInCart: state.numberItemsInCart + 1,
+            subtotalGeneral: state.subtotalGeneral + unitPrice,
             subtotalItem: {
               ...state.subtotalItem,
               [identifier]: isNaN(state.cart[identifier])
                 ? unitPrice
-                : unitPrice * state.cart[identifier],
+                : state.subtotalItem[identifier] + unitPrice,
             },
             cart: {
               ...state.cart,
               //https://stackoverflow.com/questions/2652319/how-do-you-check-that-a-number-is-nan-in-javascript
               [identifier]: isNaN(state.cart[identifier]) //state.cart.identifier  https://javascript.plainenglish.io/javascript-dot-notation-vs-bracket-notation-which-to-use-when-e24117e44d71#527c
                 ? 1 //1 porque al no existir el objeto en su carro significa que ahora el usuario esta añadiendolo 1 unidad de esta al carro
-                : state.cart[identifier]+1, //sumamos 1 si en caso el valor no es NaN ya que el usuario esta añadiendo 1 item mas al carro
+                : state.cart[identifier] + 1, //sumamos 1 si en caso el valor no es NaN ya que el usuario esta añadiendo 1 item mas al carro
             },
           };
         } else {
@@ -96,15 +96,15 @@ function reducer(state: State, action: Action): State {
         if (unitPrice) {
           return {
             ...state,
-            numberItemsInCart: state.numberItemsInCart-1,
+            numberItemsInCart: state.numberItemsInCart - 1,
             subtotalGeneral: state.subtotalGeneral - Number(unitPrice),
             subtotalItem: {
               ...state.subtotalItem,
-              [identifier]: unitPrice * state.cart[identifier],
+              [identifier]: state.cart[identifier] - unitPrice,
             },
             cart: {
               ...state.cart,
-              [identifier]: state.cart[identifier]-1,
+              [identifier]: state.cart[identifier] - 1,
             },
           };
         }

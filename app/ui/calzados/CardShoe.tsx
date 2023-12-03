@@ -59,7 +59,7 @@ export default function CardShoe(props: Record<string, any>) {
           dispatch({
             type: "addToCart",
             identifier: id,
-            unitPrice: props.newPrice,
+            unitPrice: Number(props.newPrice),
           });
         }}
       >
