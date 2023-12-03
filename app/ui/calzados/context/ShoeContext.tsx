@@ -97,10 +97,10 @@ function reducer(state: State, action: Action): State {
           return {
             ...state,
             numberItemsInCart: state.numberItemsInCart - 1,
-            subtotalGeneral: state.subtotalGeneral - Number(unitPrice),
+            subtotalGeneral: state.subtotalGeneral - unitPrice,
             subtotalItem: {
               ...state.subtotalItem,
-              [identifier]: state.cart[identifier] - unitPrice,
+              [identifier]: state.subtotalItem[identifier] - unitPrice,
             },
             cart: {
               ...state.cart,
