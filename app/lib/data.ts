@@ -53,7 +53,8 @@ export async function fetchShoes(state?: State) {
 
     //https://stackoverflow.com/questions/35038857/setting-query-string-using-fetch-get-request
     const url = new URL(
-      "/api/products?" + new URLSearchParams(params).toString()
+      "http://localhost:3000/api/products?" +
+        new URLSearchParams(params).toString()
     );
     console.log("url: ", url);
 
