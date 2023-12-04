@@ -48,7 +48,7 @@ export default function Navbar() {
   return (
     <>
       <div
-        className={`${poppins.className} z-40 bg-white sticky w-full top-0 left-0  flex shadow-xl justify-between items-center h-20 px-5`}
+        className={`${poppins.className} z-40 mb-[20px] bg-white sticky w-full top-0 left-0  flex shadow-xl justify-between items-center h-20 px-5`}
       >
         <div>
           <Image src={logo} alt="logo" width={100} height={100} />
