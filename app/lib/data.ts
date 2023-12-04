@@ -53,8 +53,7 @@ export async function fetchShoes(state?: State) {
 
     //https://stackoverflow.com/questions/35038857/setting-query-string-using-fetch-get-request
     const url = new URL(
-      (process.env.NEXT_PUBLIC_API_URL as string) +
-        "/api/products?" +
+      "https://ecommerce-nextjs14-typescript-git-main-sergio-rios-projects.vercel.app/api/products?" +
         new URLSearchParams(params).toString()
     );
     console.log("url: ", url);
@@ -76,7 +75,7 @@ export async function fetchShoes(state?: State) {
     //https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
     try {
       const response = await fetch(
-        (process.env.API_URL as string) + "/api/products",
+        "https://ecommerce-nextjs14-typescript-git-main-sergio-rios-projects.vercel.app/api/products",
         {
           headers: {
             "Content-Type": "application/json",
@@ -94,8 +93,7 @@ export async function fetchShoes(state?: State) {
 export async function fetchSingleProduct(productID: string) {
   try {
     const response = await fetch(
-      (process.env.NEXT_PUBLIC_API_URL as string) +
-        `/api/products/${productID}`,
+      `https://ecommerce-nextjs14-typescript-git-main-sergio-rios-projects.vercel.app/api/products/${productID}`,
       {
         headers: {
           "Content-Type": "application/json",
