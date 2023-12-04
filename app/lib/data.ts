@@ -53,7 +53,7 @@ export async function fetchShoes(state?: State) {
 
     //https://stackoverflow.com/questions/35038857/setting-query-string-using-fetch-get-request
     const url = new URL(
-      (process.env.NEXTAUTH_URL as string) +
+      (process.env.NEXT_PUBLIC_API_URL as string) +
         "/api/products?" +
         new URLSearchParams(params).toString()
     );
@@ -76,7 +76,7 @@ export async function fetchShoes(state?: State) {
     //https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
     try {
       const response = await fetch(
-        (process.env.NEXTAUTH_URL as string) + "/api/products",
+        (process.env.NEXT_PUBLIC_API_URL as string) + "/api/products",
         {
           headers: {
             "Content-Type": "application/json",
@@ -94,7 +94,8 @@ export async function fetchShoes(state?: State) {
 export async function fetchSingleProduct(productID: string) {
   try {
     const response = await fetch(
-      (process.env.NEXTAUTH_URL as string) + `/api/products/${productID}`,
+      (process.env.NEXT_PUBLIC_API_URL as string) +
+        `/api/products/${productID}`,
       {
         headers: {
           "Content-Type": "application/json",
