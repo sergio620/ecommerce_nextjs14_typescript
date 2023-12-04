@@ -53,8 +53,7 @@ export async function fetchShoes(state?: State) {
 
     //https://stackoverflow.com/questions/35038857/setting-query-string-using-fetch-get-request
     const url = new URL(
-      "http://localhost:3000/api/products?" +
-        new URLSearchParams(params).toString()
+      "/api/products?" + new URLSearchParams(params).toString()
     );
     console.log("url: ", url);
 
@@ -74,7 +73,7 @@ export async function fetchShoes(state?: State) {
   } else {
     //https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
     try {
-      const response = await fetch("http://localhost:3000/api/products", {
+      const response = await fetch("/api/products", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -89,15 +88,12 @@ export async function fetchShoes(state?: State) {
 
 export async function fetchSingleProduct(productID: string) {
   try {
-    const response = await fetch(
-      `http://localhost:3000/api/products/${productID}`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }
-    );
+    const response = await fetch(`/api/products/${productID}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
     const data = await response.json();
     return data;
   } catch (error) {
