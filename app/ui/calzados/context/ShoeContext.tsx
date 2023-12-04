@@ -56,7 +56,7 @@ function reducer(state: State, action: Action): State {
     case "afterPressEnter":
       if (keyEnterPressed) {
         if (keyEnterPressed.toString() === "Enter") {
-          return { ...state, switchKeydown: !state.switchKeydown };
+          return { ...state, switchToFetchData: !state.switchToFetchData };
         } else {
           return state;
         }
@@ -137,6 +137,7 @@ function reducer(state: State, action: Action): State {
           company: "all",
         },
         inputSearchBox: "",
+        switchToFetchData: !state.switchToFetchData,
       };
 
     default:
@@ -145,7 +146,7 @@ function reducer(state: State, action: Action): State {
 }
 
 const initialState: State = {
-  switchKeydown: false,
+  switchToFetchData: false,
   inputSearchBox: "",
   selectedFilter: {
     category: "all",

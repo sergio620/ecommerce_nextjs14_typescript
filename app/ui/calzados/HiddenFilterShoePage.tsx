@@ -75,7 +75,7 @@ const elementsSidebar: ElementsSidebar = [
 export default function HiddenFilterShoePage() {
   const { state, dispatch } = useShoeContext();
   console.log("HiddenFilterShoePage rendering: ");
-  //c
+
   return (
     <div
       className={`bg-slate-50/90 ${

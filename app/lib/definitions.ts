@@ -56,7 +56,7 @@ export type SelectedFilter = {
 };
 //---------Types for Dispatch-------
 export type State = {
-  switchKeydown: boolean;
+  switchToFetchData: boolean;
   inputSearchBox: string;
   selectedFilter: SelectedFilter;
   data: Record<string, any>[];

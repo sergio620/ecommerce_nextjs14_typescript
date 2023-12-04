@@ -6,6 +6,9 @@ import { useShoeContext } from "./context/ShoeContext";
 
 export default function PopulateShoes() {
   const { state, dispatch } = useShoeContext();
+  console.log("state.selectedFilter: ", state.selectedFilter);
+  console.log("state.inputSearchBox: ", state.inputSearchBox);
+
   useEffect(() => {
     async function fetchData() {
       const data = await fetchShoes(state);
@@ -17,7 +20,7 @@ export default function PopulateShoes() {
     state.selectedFilter.color,
     state.selectedFilter.price,
     state.selectedFilter.company,
-    state.switchKeydown,
+    state.switchToFetchData,
   ]);
 
   useEffect(() => {
