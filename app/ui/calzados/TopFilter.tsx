@@ -38,7 +38,7 @@ export default function TopFilter() {
   return (
     <div className="flex flex-col grow">
       <h2 className="font-bold text-xl mb-3">Recomendado</h2>
-      <div className="flex gap-4 whitespace-nowrap flex-wrap">
+      <div className="grid grid-cols-2 md:flex md:flex-row gap-4 whitespace-wrap">
         {filter.map((item, index) => (
           <button
             key={index}

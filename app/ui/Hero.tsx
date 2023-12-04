@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <div className="bg-[#CDF5FD] z-10 relative h-96 flex flex-col justify-center">
       <Image
-        className="object-cover pl-[300px] sm:pl-[300px] md:pl-[500px] lg:pl-[700px] xl:pl-[900px] z-20"
+        className="object-cover pl-[200px] sm:pl-[300px] md:pl-[500px] lg:pl-[700px] xl:pl-[900px] z-20"
         fill
         src={woman}
         alt="woman"

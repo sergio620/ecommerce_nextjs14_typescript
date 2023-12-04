@@ -7,8 +7,8 @@ export default function Offers() {
         <p className="text-xl sm:text-3xl md:text-7xl lg:text-8xl text-gray-800 font-semibold">
           Exclusivo <br /> Ofertas <br /> para ti
         </p>
-        <p className="text-sm p-2">SÓLO EN LOS PRODUCTOS MÁS VENDIDOS</p>
-        <button className="text-xl bg-red-500 text-white rounded-xl m-3 p-3">Revisalo ahora</button>
+        <p className="text-sm pr-[100px] sm:p-2">SÓLO EN LOS PRODUCTOS MÁS VENDIDOS</p>
+        <button className="text-xl bg-red-500 text-white rounded-xl mr-3 my-3 p-3">Revisalo ahora</button>
       </div>
       <div className="absolute top-0 right-0 h-[100%] w-1/2">
         <Image

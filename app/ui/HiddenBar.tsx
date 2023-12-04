@@ -8,8 +8,8 @@ export default function HiddenBar({ links }: { links: LinkItem[] }) {
   const { state, dispatch } = useShoeContext();
   return (
     <div
-      className={`transition-all duration-500 w-full md:w-1/2 fixed z-50 bg-slate-50/90 top-0 ${
-        state.isOpenMenu ? "right-0" : "right-[-800px]"
+      className={`transition-all duration-500 md:hidden overflow-x-hidden md:w-1/2 fixed z-50 bg-slate-50/90 top-0 right-0 ${
+        state.isOpenMenu ? "w-0 " : "w-full"
       }  flex flex-col items-center`}
     >
       <button

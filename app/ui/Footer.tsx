@@ -44,7 +44,7 @@ export default function Footer() {
         </div>
       </div>
       <hr className="bg-gray-500 w-[80%] mx-auto h-[3px]" />
-      <p>Copyright @ 2023 - Todos los derechos reservados</p>
+      <p className="text-center">Copyright @ 2023 - Todos los derechos reservados</p>
     </div>
   );
 }

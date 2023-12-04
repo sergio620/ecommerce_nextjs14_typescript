@@ -19,7 +19,6 @@ export type Value = Category | Price | Color | Company;
 export interface LinkItem {
   href: string;
   child: string | React.JSX.Element;
-  breakpoint: string;
 }
 //https://stackoverflow.com/questions/72170275/typescript-object-key-as-key-of-another-object
 

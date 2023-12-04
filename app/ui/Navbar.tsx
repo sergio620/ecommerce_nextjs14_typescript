@@ -17,59 +17,46 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["400"] });
 export default function Navbar() {
   const { dispatch, state } = useShoeContext();
   const links: LinkItem[] = [
-    { href: "/", child: "Home", breakpoint: "hidden md:flex" },
+    { href: "/", child: "Home" },
     {
       href: "/products/calzados",
       child: "Calzados",
-      breakpoint: "hidden md:flex",
     },
-    /*  {
-      href: "/products/hombres",
-      child: "Hombres",
-      breakpoint: "hidden md:flex",
-    },
-    {
-      href: "/products/mujeres",
-      child: "Mujeres",
-      breakpoint: "hidden md:flex",
-    }, */
     {
       href: "/login",
-      child: <FaUser className="text-gray-600 h-5 w-10" />,
-      breakpoint: "flex",
+      child: <FaUser className="flex text-gray-600 h-5 w-10" />,
     },
     {
       href: "/cart",
-      child: <AiOutlineShoppingCart className="text-gray-600 h-8 w-10" />,
-      breakpoint: "flex",
+      child: <AiOutlineShoppingCart className="flex text-gray-600 h-8 w-10" />,
     },
   ];
 
   return (
     <>
       <div
-        className={`${poppins.className} z-40 mb-[20px] bg-white sticky w-full top-0 left-0  flex shadow-xl justify-between items-center h-20 px-5`}
+        className={`${poppins.className} z-40 min-w-max mb-[20px] bg-white sticky top-0 left-0 flex shadow-xl justify-between items-center h-20 px-5`}
       >
-        <div>
+        <Link href={"/"}>
           <Image src={logo} alt="logo" width={100} height={100} />
-        </div>
+        </Link>
         {/* Renderiza la barra de busqueda solo si esta en la pagina /calzados */}
         {usePathname() === "/products/calzados" && <SearchBox />}
         {/* -------------------------------------------------------------------- */}
-        <nav className="flex items-center h-full ">
+        <nav className="hidden md:flex items-center h-full ml-auto">
           <ul className="h-full flex items-center ">
             {links.map((link, index) => (
               <button
                 key={index}
-                className={`${link.breakpoint} items-center px-5 hover:bg-gray-200 h-11 `}
+                className={`flex items-center md:px-5 hover:bg-gray-200 h-11 `}
               >
                 <Link
                   href={link.href}
-                  className={`${link.href === "/cart" ? "relative" : null}`}
+                  className={`${link.href === "/cart" ? "relative" : " "}`}
                 >
                   {link.child}
                   {link.href === "/cart" && (
-                    <div className="absolute h-[22px] w-[22px] bg-red-500 rounded-full -top-2 -right-2 text-white text-center">
+                    <div className="hidden md:block absolute h-[22px] w-[22px] bg-red-500 rounded-full -top-2 -right-2 text-white text-center">
                       {state.numberItemsInCart}
                     </div>
                   )}
@@ -77,14 +64,14 @@ export default function Navbar() {
               </button>
             ))}
           </ul>
-          <button
-            onClick={() => {
-              dispatch({ type: "setIsOpen" });
-            }}
-          >
-            <FaBars className="md:hidden h-5 w-10" />
-          </button>
         </nav>
+        <button
+          onClick={() => {
+            dispatch({ type: "setIsOpen" });
+          }}
+        >
+          <FaBars className="md:hidden h-5 w-10" />
+        </button>
       </div>
       <HiddenBar links={links} />
     </>

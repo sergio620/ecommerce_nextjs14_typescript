@@ -28,7 +28,7 @@ export default function Card(props: Record<string, any>) {
         </div>
       </Link>
       <button
-        className="py-3 transition-all duration-300 opacity-0 group-hover:opacity-100 bg-red-500 text-white"
+        className="py-3 transition-all duration-300 opacity-100 md:opacity-0 group-hover:opacity-100 bg-red-500 text-white"
         onClick={() => {
           dispatch({
             type: "addToCart",

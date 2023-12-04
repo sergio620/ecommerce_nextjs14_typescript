@@ -37,7 +37,7 @@ export default function Popular() {
   }, []);
   return (
     <div>
-      <p className="p-6 text-gray-800 text-5xl font-bold text-center">
+      <p className="p-6 text-gray-800 text-xl sm:text-5xl font-bold text-center">
         PRODUCTOS POPULARES
       </p>
       <hr className="bg-gray-600 w-[200px] h-[6px] mx-auto rounded" />

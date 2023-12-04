@@ -7,13 +7,13 @@ export default function NewsLetter() {
       <p className="w-4/5 mx-auto text-sm">
         Suscríbete a nuestro Boletin informativo y mantente actualizado
       </p>
-      <div className="mt-2 w-4/5 mx-auto h-[30px] md:h-[70px] pl-5">
+      <div className="mt-2 w-4/5 sm:h-[30px] mx-auto md:h-[70px] ">
         <input
           type="email"
-          placeholder="Su identificación de correo electrónico"
-          className="w-3/5 h-full rounded-l-lg pl-3"
+          placeholder="Su correo electrónico"
+          className="sm:w-3/5 h-full pl-3"
         />
-        <button className="px-3 h-full text-xl rounded-r-lg bg-red-500 text-white">
+        <button className="px-3 h-full text-xl bg-red-500 text-white">
           Suscribirse
         </button>
       </div>
