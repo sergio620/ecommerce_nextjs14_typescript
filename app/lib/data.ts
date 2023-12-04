@@ -76,7 +76,7 @@ export async function fetchShoes(state?: State) {
     //https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
     try {
       const response = await fetch(
-        (process.env.NEXT_PUBLIC_API_URL as string) + "/api/products",
+        (process.env.API_URL as string) + "/api/products",
         {
           headers: {
             "Content-Type": "application/json",
