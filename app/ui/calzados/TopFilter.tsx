@@ -7,7 +7,7 @@ import { MdArrowDropDown } from "react-icons/md";
 
 const filter = [
   {
-    inputTag: "Todos los productos",
+    inputTag: "Todas las compañias",
     value: "all",
   },
   {
@@ -45,7 +45,7 @@ export default function TopFilter() {
           onClick={() => dispatch({ type: "openTopFilter" })}
         >
           <div>Compañias</div>
-          <MdArrowDropDown className="w-5 h-5"/>
+          <MdArrowDropDown className="w-5 h-5" />
         </button>
         <div
           className={`transition-all duration-500 overflow-y-hidden ${
@@ -73,15 +73,15 @@ export default function TopFilter() {
               {item.inputTag}
             </button>
           ))}
-          <Link href={"/products/calzados"}>
-            <button
-              className="font-bold p-3 hover:rounded hover:bg-gray-300"
-              onClick={() => dispatch({ type: "clearFilter" })}
-            >
-              Limpiar filtros
-            </button>
-          </Link>
         </div>
+        <Link href={"/products/calzados"}>
+          <button
+            className="font-bold p-3 hover:rounded hover:bg-gray-300"
+            onClick={() => dispatch({ type: "clearFilter" })}
+          >
+            Mostrar todo
+          </button>
+        </Link>
       </div>
     </div>
   );
