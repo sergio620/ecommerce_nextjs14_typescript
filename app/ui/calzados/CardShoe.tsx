@@ -52,7 +52,7 @@ export default function CardShoe(props: Record<string, any>) {
       </Link>
       <button
         id={props.id}
-        className="w-full mt-auto py-3 transition-all duration-300 opacity-0 group-hover:opacity-100 bg-red-500 text-white"
+        className="w-full mt-auto py-3 transition-all duration-300 opacity-100 md:opacity-0 group-hover:opacity-100 bg-red-500 text-white"
         onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
           let id = e.currentTarget.getAttribute("id");
           assertHasId(id);

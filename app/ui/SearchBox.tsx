@@ -12,7 +12,7 @@ function assertIsDefined(val: any): asserts val is string {
 export default function SearchBox() {
   const { dispatch, state } = useShoeContext();
   return (
-    <div className="rounded md:flex h-[60px] mr-auto p-[10px] hidden">
+    <div className="rounded flex h-[60px] mr-auto p-[10px]">
       <input
         className="pl-5 grow h-[40px] h-full py-[9px] bg-[#F7F6F6]"
         type="text"
