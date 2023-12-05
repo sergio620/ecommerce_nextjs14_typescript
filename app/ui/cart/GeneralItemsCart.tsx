@@ -24,34 +24,36 @@ export default function GeneralItemsCart() {
         return (
           <div
             key={index}
-            className="flex justify-between p-3 border border-gray-300 my-2 rounded shadow"
+            className="flex justify-between gap-2 p-3 border border-gray-300 my-2 rounded shadow"
           >
-            <div className="flex justify-center">
-              <Image
-                src={item.thumbnail}
-                alt="shoe"
-                width={140}
-                height={140}
-                className="object-contain"
-              />
-            </div>
-            <div className="flex flex-col p-3">
-              <div className="font-bold">{item.title}</div>
-              <div>{item.brand}</div>
-              <div className="flex">
-                <div className="flex gap-2">
-                  <div className="py-3 flex">
-                    <FaStar className="text-yellow-600 text-[15px]" />
-                    <FaStar className="text-yellow-600 text-[15px]" />
-                    <FaStar className="text-yellow-600 text-[15px]" />
-                    <FaStar className="text-yellow-600 text-[15px]" />
-                    <FaStar className="text-[15px]" />
+            <div className="flex flex-col md:flex-row">
+              <div className="flex justify-center">
+                <Image
+                  src={item.thumbnail}
+                  alt="shoe"
+                  width={140}
+                  height={140}
+                  className="object-contain"
+                />
+              </div>
+              <div className="flex flex-col p-3">
+                <div className="font-bold">{item.title}</div>
+                <div>{item.brand}</div>
+                <div className="flex">
+                  <div className="flex gap-2">
+                    <div className="py-3 flex">
+                      <FaStar className="text-yellow-600 text-[15px]" />
+                      <FaStar className="text-yellow-600 text-[15px]" />
+                      <FaStar className="text-yellow-600 text-[15px]" />
+                      <FaStar className="text-yellow-600 text-[15px]" />
+                      <FaStar className="text-[15px]" />
+                    </div>
+                    <div className="py-3 text-sm">{item.rating}</div>
                   </div>
-                  <div className="py-3 text-sm">{item.rating}</div>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col justify-between md:justify-center">
               <div className="flex gap-5 justify-between py-1">
                 <div className=" text-sm font-semibold ">Precio unitario:</div>
                 <div className="mt-auto whitespace-nowrap">S/ {item.price}</div>
@@ -65,7 +67,9 @@ export default function GeneralItemsCart() {
                   Precio Total <br />
                   del Producto:
                 </div>
-                <div className="mt-auto whitespace-nowrap">S/ {state.subtotalItem[item.id]}</div>
+                <div className="mt-auto whitespace-nowrap">
+                  S/ {state.subtotalItem[item.id]}
+                </div>
               </div>
             </div>
             <div className="">
