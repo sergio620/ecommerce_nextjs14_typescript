@@ -61,7 +61,7 @@ function reducer(state: State, action: Action): State {
           return state;
         }
       } else {
-        throw new Error("keyEnterPressed is undefined");
+        return { ...state, switchToFetchData: !state.switchToFetchData };
       }
 
     case "addToCart":
@@ -139,6 +139,8 @@ function reducer(state: State, action: Action): State {
         inputSearchBox: "",
         switchToFetchData: !state.switchToFetchData,
       };
+    case "openTopFilter":
+      return { ...state, isOpenTopFilter: !state.isOpenTopFilter };
 
     default:
       return state;
@@ -163,6 +165,7 @@ const initialState: State = {
   firstFetchHomePage: [],
   isOpenMenu: false,
   isOpenSideFilter: false,
+  isOpenTopFilter: false,
 };
 
 export default function ShoeWrapper({

@@ -1,7 +1,8 @@
-"use client"
+"use client";
 import React from "react";
 import { useShoeContext } from "./calzados/context/ShoeContext";
 import { FaSearch } from "react-icons/fa";
+import { disconnect } from "process";
 
 function assertIsDefined(val: any): asserts val is string {
   if (typeof val !== "string") {
@@ -11,7 +12,7 @@ function assertIsDefined(val: any): asserts val is string {
 export default function SearchBox() {
   const { dispatch, state } = useShoeContext();
   return (
-    <div className="rounded flex h-[60px] mr-auto p-[10px]">
+    <div className="rounded flex h-[60px] mr-auto p-[10px] hidden md:block">
       <input
         className="pl-5 grow h-[40px] h-full py-[9px] bg-[#F7F6F6]"
         type="text"
@@ -32,7 +33,10 @@ export default function SearchBox() {
           });
         }}
       />
-      <button className="border-gray200 border w-[45px]">
+      <button
+        className="border-gray200 border w-[45px]"
+        onClick={() => dispatch({ type: "afterPressEnter" })}
+      >
         <FaSearch className="text-gray-600 h-5 w-full" />
       </button>
     </div>

@@ -33,9 +33,9 @@ export default function Navbar() {
   ];
 
   return (
-    <>
+    <div className="w-full">
       <div
-        className={`${poppins.className} z-40 min-w-max mb-[20px] bg-white sticky top-0 left-0 flex shadow-xl justify-between items-center h-20 px-5`}
+        className={`${poppins.className} md:order-1 z-40 min-w-max mb-[20px] bg-white sticky top-0 left-0 flex shadow-xl justify-between items-center h-20 px-5`}
       >
         <Link href={"/"}>
           <Image src={logo} alt="logo" width={100} height={100} />
@@ -74,6 +74,6 @@ export default function Navbar() {
         </button>
       </div>
       <HiddenBar links={links} />
-    </>
+    </div>
   );
 }

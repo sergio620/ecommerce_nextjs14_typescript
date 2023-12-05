@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="">
-      <body className={inter.className+" min-w-fit"}>
+      <body className={inter.className}>
         <ShoeWrapper>
           <Navbar />
           <main>{children}</main>

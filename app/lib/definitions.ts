@@ -67,6 +67,7 @@ export type State = {
   firstFetchHomePage: Record<string, any>[];
   isOpenMenu: boolean; //para detectar si el menu de navegacion ("hambuerguer icon") a sido abierto (clickado)
   isOpenSideFilter: boolean;
+  isOpenTopFilter: boolean;
 };
 export type Action = {
   type:
@@ -80,7 +81,8 @@ export type Action = {
     | "deleteFromCart"
     | "setIsOpen"
     | "sideHiddenFilter"
-    | "clearFilter";
+    | "clearFilter"
+    | "openTopFilter";
   setInputSearchBox?: string;
   id?: Id;
   value?: Value;
