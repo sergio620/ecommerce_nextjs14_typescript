@@ -15,7 +15,7 @@ export default function DisplayShoe({
   console.log(state.cart);
 
   return (
-    <div className="flex">
+    <div className="flex items-center flex-col md:flex-row">
       <div className="flex w-[65%] h-screen p-5">
         <div className="relative w-full h-full">
           <Image
@@ -26,7 +26,7 @@ export default function DisplayShoe({
           />
         </div>
       </div>
-      <div className="p-5 grow flex justify-center">
+      <div className="order-first md:order-last p-5 grow flex justify-center">
         <div className="p-5 rounded border border-gray-400">
           <p className="py-3 text-[24px] text">{data.title}</p>
           <p className="py-3 line-through">{data.prevPrice}</p>

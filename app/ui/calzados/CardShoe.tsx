@@ -31,12 +31,12 @@ export default function CardShoe(props: Record<string, any>) {
 
         <div className="mt-auto">
           <p className="text-center">{props.title}</p>
-          <div className="py-3 flex">
-            <FaStar className="text-yellow-600 text-[24px]" />
-            <FaStar className="text-yellow-600 text-[24px]" />
-            <FaStar className="text-yellow-600 text-[24px]" />
-            <FaStar className="text-yellow-600 text-[24px]" />
-            <FaStar className="text-[24px]" />
+          <div className="py-3 flex items-center">
+            <FaStar className="text-yellow-600 text-[24px] text-sm" />
+            <FaStar className="text-yellow-600 text-[24px] text-sm" />
+            <FaStar className="text-yellow-600 text-[24px] text-sm" />
+            <FaStar className="text-yellow-600 text-[24px] text-sm" />
+            <FaStar className="text-[24px] text-sm" />
             <p className="">{props.reviews}</p>
           </div>
           <div className="flex justify-center gap-2">

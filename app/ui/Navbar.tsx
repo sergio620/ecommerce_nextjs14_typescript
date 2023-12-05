@@ -32,9 +32,9 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="w-full">
+    <div >
       <div
-        className={`${poppins.className} md:order-1 z-40 min-w-max mb-[20px] bg-white sticky top-0 left-0 flex shadow-xl justify-between items-center h-20 px-5`}
+        className={`${poppins.className} z-40 mb-[20px] bg-white sticky top-0 left-0 flex shadow-xl justify-between items-center h-20 px-5`}
       >
         <Link href={"/"}>
           <Image
@@ -42,7 +42,9 @@ export default function Navbar() {
             alt="logo"
             width={100}
             height={100}
-            className="hidden md:block"
+            className={`${
+              usePathname() === "/products/calzados" ? " hidden " : " "
+            }  md:block`}
           />
         </Link>
         {/* Renderiza la barra de busqueda solo si esta en la pagina /calzados */}
@@ -66,7 +68,7 @@ export default function Navbar() {
                   {link.child}
                   {link.href === "/cart" && (
                     <div
-                      className={`hidden md:block absolute h-[22px] w-[22px] bg-red-500 rounded-full -top-2 -right-2 text-white text-center`}
+                      className={`absolute h-[22px] w-[22px] bg-red-500 rounded-full -top-2 -right-2 text-white text-center`}
                     >
                       {state.numberItemsInCart}
                     </div>

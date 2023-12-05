@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="w-fit">
+    <html lang="en">
       <body className={inter.className}>
         <ShoeWrapper>
           <Navbar />
