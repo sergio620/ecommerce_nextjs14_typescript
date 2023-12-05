@@ -32,7 +32,7 @@ export default function Navbar() {
   ];
 
   return (
-    <div >
+    <div className="sticky top-0 z-50">
       <div
         className={`${poppins.className} z-40 mb-[20px] bg-white sticky top-0 left-0 flex shadow-xl justify-between items-center h-20 px-5`}
       >
