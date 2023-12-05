@@ -13,7 +13,7 @@ export default function Hero() {
       />
       <div className="pl-4 flex flex-col z-30 pr-36 md:pr-64">
         <p className="text-sm text-gray-900">
-          Colección Primavera / Verano 2017
+          Colección Primavera / Verano 2024
         </p>
         <p className="my-5 text-xl sm:text-3xl md:text-6xl text-gray-800">
           Obtenga hasta un 30% de descuento en recién llegados
