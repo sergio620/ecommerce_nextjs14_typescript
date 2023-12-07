@@ -11,7 +11,7 @@ export default function Hero() {
         src={woman}
         alt="woman"
       />
-      <div className="pl-4 flex flex-col z-30 pr-36 md:pr-64">
+      <div className="pl-4 flex flex-col z-30 pr-36 md:pr-64 md:ml-[120px]">
         <p className="text-sm text-gray-900">
           Colección Primavera / Verano 2024
         </p>
