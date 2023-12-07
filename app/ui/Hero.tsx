@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <div className="bg-[#CDF5FD] z-10 relative h-96 flex flex-col justify-center">
       <Image
-        className="object-cover pl-[200px] sm:pl-[300px] md:pl-[500px] lg:pl-[700px] xl:pl-[900px] z-20"
+        className="object-cover pl-[200px] sm:pl-[500px] md:pl-[600px] lg:pl-[800px] xl:pl-[1000px] 2xl:pl-[1100px] z-20"
         fill
         src={woman}
         alt="woman"
@@ -15,7 +15,7 @@ export default function Hero() {
         <p className="text-sm text-gray-900">
           Colección Primavera / Verano 2024
         </p>
-        <p className="my-5 text-xl sm:text-3xl md:text-6xl text-gray-800">
+        <p className="my-5 text-xl sm:text-3xl md:text-5xl text-gray-800 2xl:pr-5">
           Obtenga hasta un 30% de descuento en recién llegados
         </p>
         <div className="text-xl text-gray-800">
