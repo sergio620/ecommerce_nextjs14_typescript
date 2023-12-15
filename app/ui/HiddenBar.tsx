@@ -21,7 +21,7 @@ export default function HiddenBar({ links }: { links: LinkItem[] }) {
         <FaTimes className="block h-5 w-10 " />
       </button>
 
-      <nav className="w-full ">
+      <nav className="w-full">
         <ul className="flex flex-col items-center w-full ">
           {links.map((link, index) => (
             <button
@@ -29,7 +29,9 @@ export default function HiddenBar({ links }: { links: LinkItem[] }) {
               className={`flex flex-col justify-center items-center border-b-2 border-gray-500 w-full  hover:bg-gray-200 h-11`}
               onClick={() => dispatch({ type: "setIsOpen" })}
             >
-              <Link href={link.href}>{link.child}</Link>
+              <Link href={link.href} className="w-full ">
+                {link.child}
+              </Link>
             </button>
           ))}
         </ul>

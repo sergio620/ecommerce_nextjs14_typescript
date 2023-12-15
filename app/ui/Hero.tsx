@@ -4,7 +4,7 @@ import woman from "@/public/woman.png";
 
 export default function Hero() {
   return (
-    <div className="bg-[#CDF5FD] z-10 relative h-96 flex flex-col justify-center">
+    <div className="bg-[#CDF5FD] z-10 relative h-[590px] flex flex-col justify-center">
       <Image
         className="object-cover pl-[200px] sm:pl-[500px] md:pl-[600px] lg:pl-[800px] xl:pl-[1000px] 2xl:pl-[1100px] z-20"
         fill

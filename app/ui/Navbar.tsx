@@ -23,18 +23,18 @@ export default function Navbar() {
     },
     {
       href: "/login",
-      child: <FaUser className="flex text-gray-600 h-5 w-10" />,
+      child: <FaUser className="flex text-gray-600 h-5 w-10 mx-auto" />,
     },
     {
       href: "/cart",
-      child: <AiOutlineShoppingCart className="flex text-gray-600 h-8 w-10" />,
+      child: <AiOutlineShoppingCart className="flex text-gray-600 h-8 w-10 mx-auto" />,
     },
   ];
 
   return (
     <div className="sticky top-0 z-50">
       <div
-        className={`${poppins.className} z-40 mb-[20px] bg-white sticky top-0 left-0 flex shadow-xl justify-between items-center h-20 px-5`}
+        className={`${poppins.className} z-40 bg-white sticky top-0 left-0 flex shadow-xl justify-between items-center h-20 px-5`}
       >
         <Link href={"/"}>
           <Image

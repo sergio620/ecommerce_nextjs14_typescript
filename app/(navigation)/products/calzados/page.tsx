@@ -1,7 +1,6 @@
 import SidebarShoePage from "../../../ui/calzados/SidebarShoePage";
 import PopulateShoes from "@/app/ui/calzados/PopulateShoes";
 import HiddenFilterShoePage from "@/app/ui/calzados/HiddenFilterShoePage";
-
 import HeaderShoePage from "@/app/ui/calzados/HeaderShoePage";
 export default function Calzados() {
   return (
