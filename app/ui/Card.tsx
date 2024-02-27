@@ -5,13 +5,17 @@ import { useShoeContext } from "./calzados/context/ShoeContext";
 
 export default function Card(props: Record<string, any>) {
   const { dispatch } = useShoeContext();
+  console.log("Card - props.image: ", props.image);
+
   return (
     <div className="group flex flex-col hover:shadow-xl">
       <Link href={`/products/general/${props.id}`} className="h-full">
-        <div className="h-full px-2 pt-2 rounded shadow flex flex-col items-center justify-center gap-2">
+        <div className="relative h-full px-2 pt-2 rounded shadow flex flex-col items-center justify-center gap-2">
           {/*   <button onClick={window.scrollTo(0, 0)}> */}
           <Image
-            className="object-cover mb-5"
+            //https://stackoverflow.com/questions/76758190/nextjs-how-to-avoid-image-warnings
+            //add w-auto to className
+            className="object-cover mb-5 w-auto"
             src={props.image}
             width={200}
             height={200}

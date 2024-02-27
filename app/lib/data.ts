@@ -11,10 +11,12 @@ function assertIsDefined(
 
 export async function fetchProducts() {
   try {
-    const data = await fetch("https://dummyjson.com/products");
-    const response = await data.json();
-    assertIsDefined(response);
-    return response;
+    const response = await fetch("https://dummyjson.com/products");
+    const data = await response.json();
+    console.log("data.ts - fetchProducts: ", data);
+
+    assertIsDefined(data);
+    return data;
   } catch (error) {
     throw new Error("Failed to fetch products.");
   }

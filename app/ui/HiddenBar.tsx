@@ -29,7 +29,7 @@ export default function HiddenBar({ links }: { links: LinkItem[] }) {
               className={`flex flex-col justify-center items-center border-b-2 border-gray-500 w-full  hover:bg-gray-200 h-11`}
               onClick={() => dispatch({ type: "setIsOpen" })}
             >
-              <Link href={link.href} className="w-full ">
+              <Link href={link.href} className="w-full h-full p-2">
                 {link.child}
               </Link>
             </button>

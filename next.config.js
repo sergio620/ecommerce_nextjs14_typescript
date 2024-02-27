@@ -9,6 +9,10 @@ module.exports = {
       },
       {
         protocol: "https",
+        hostname: "cdn.dummyjson.com",
+      },
+      {
+        protocol: "https",
         hostname: "freepngimg.com",
       },
       {

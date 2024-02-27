@@ -33,18 +33,20 @@ export default function Footer() {
       <div
         className={`${pathname === "/login" ? "hidden " : ""}flex gap-[50px]`}
       >
-        <div className="w-[40px] aspect-square w-14 rounded border-2 border-gray-200 p-2">
+        <div className="w-[40px] aspect-square rounded border-2 border-gray-200 p-2">
           <AiOutlineInstagram className="h-full w-full text-gray-900 " />
         </div>
-        <div className="w-[40px] aspect-square w-14 rounded border-2 border-gray-200 p-2">
+        <div className="w-[40px] aspect-square rounded border-2 border-gray-200 p-2">
           <AiFillFacebook className="h-full w-full text-gray-900 " />
         </div>
-        <div className="w-[40px] aspect-square w-14 rounded border-2 border-gray-200 p-2">
+        <div className="w-[40px] aspect-square rounded border-2 border-gray-200 p-2">
           <BsWhatsapp className="h-full w-full text-gray-900 " />
         </div>
       </div>
       <hr className="bg-gray-500 w-[80%] mx-auto h-[3px]" />
-      <p className="text-center">Copyright @ 2023 - Todos los derechos reservados</p>
+      <p className="text-center">
+        Copyright @ 2023 - Todos los derechos reservados
+      </p>
     </div>
   );
 }
