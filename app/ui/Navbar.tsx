@@ -27,7 +27,9 @@ export default function Navbar() {
     },
     {
       href: "/cart",
-      child: <AiOutlineShoppingCart className="flex text-gray-600 h-8 w-10 mx-auto" />,
+      child: (
+        <AiOutlineShoppingCart className="flex text-gray-600 h-8 w-10 mx-auto" />
+      ),
     },
   ];
 
@@ -42,9 +44,11 @@ export default function Navbar() {
             alt="logo"
             width={100}
             height={100}
+            //https://stackoverflow.com/questions/76758190/nextjs-how-to-avoid-image-warnings
+            //NextJS how to avoid Image warnings
             className={`${
               usePathname() === "/products/calzados" ? " hidden " : " "
-            }  md:block`}
+            }  md:block w-auto`}
           />
         </Link>
         {/* Renderiza la barra de busqueda solo si esta en la pagina /calzados */}

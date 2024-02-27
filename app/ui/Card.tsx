@@ -5,7 +5,6 @@ import { useShoeContext } from "./calzados/context/ShoeContext";
 
 export default function Card(props: Record<string, any>) {
   const { dispatch } = useShoeContext();
-  console.log("Card - props.image: ", props.image);
 
   return (
     <div className="group flex flex-col hover:shadow-xl">

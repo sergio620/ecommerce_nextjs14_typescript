@@ -5,8 +5,6 @@ import Card from "./Card";
 import { useShoeContext } from "./calzados/context/ShoeContext";
 
 function PopulateContent({ products }: { products: Record<string, any>[] }) {
-  console.log("Popular - PopulateContent - products: ", products);
-
   return (
     <div className="p-5 grid grid-cols-2 gap-1 md:grid-cols-4 md:gap-4">
       {/* https://www.youtube.com/watch?v=8K1N3fE-cDs min 4:50 Reason of question mark*/}
